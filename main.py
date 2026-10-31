@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List
 from agent_logic import get_learning_path, get_ai_chat_response
@@ -31,6 +32,9 @@ async def get_content(req: StudyRequest):
 async def chat_with_agent(req: ChatRequest):
     reply = get_ai_chat_response(req.message)
     return {"reply": reply}
+
+# Dòng này giúp server hiển thị giao diện index.html ở trang chủ
+app.mount("/", StaticFiles(directory=".", html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
