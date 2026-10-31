@@ -19,11 +19,12 @@ def load_json_file(filename):
 
 def get_learning_path(need_attention):
     """
-    Đồng bộ logic trả về dữ liệu cho cả 2 trường hợp:
-    - Trường hợp 1: Không có lỗi -> Trả về toàn bộ khoá học nâng cao.
-    - Trường hợp 2: Có lỗi -> Lọc và trả về danh sách các bài học bù đắp.
+    Phân tách rõ ràng tuyệt đối giữa lộ trình nâng cao và lộ trình bù đắp:
+    - Nếu không có lỗi (need_attention trống): Trả về data_advanced.json.
+    - Nếu có lỗi: Bắt buộc lấy đúng từ data_remedial.json, không lấy nhầm dữ liệu nâng cao.
     """
     advanced_data = load_json_file("data_advanced.json")
+    remedial_data = load_json_file("data_remedial.json")
     
     # Trường hợp 1: Học sinh đạt hết -> Trả về lộ trình nâng cao
     if not need_attention or len(need_attention) == 0:
@@ -32,17 +33,21 @@ def get_learning_path(need_attention):
             "content": advanced_data
         }
     
-    # Trường hợp 2: Học sinh chưa đạt -> Lọc các bài học bù đắp từ data_remedial.json
-    remedial_data = load_json_file("data_remedial.json")
-    
+    # Trường hợp 2: Học sinh có biểu hiện chưa đạt -> Bắt buộc lấy từ remedial_data
     filtered_content = {}
     for key in need_attention:
         if key in remedial_data:
             filtered_content[key] = remedial_data[key]
             
-    # Nếu không khớp key nào, dự phòng trả về toàn bộ remedial hoặc advanced
+    # Dự phòng an toàn: Nếu key truyền vào không khớp với remedial_data, 
+    # lấy toàn bộ nội dung trong remedial_data chứ TUYỆT ĐỐI KHÔNG quay về advanced_data
     if not filtered_content:
-        filtered_content = remedial_data if remedial_data else advanced_data
+        filtered_content = remedial_data if remedial_data else {"REM_DEFAULT": {
+            "title": "Kiến thức bù đắp tổng hợp",
+            "video_url": "https://www.youtube.com/embed/UlXXRd3HGT0",
+            "reading_content": "Nội dung hướng dẫn ôn tập lại các kiến thức cơ bản để khắc phục điểm chưa đạt.",
+            "check_questions": []
+        }}
 
     return {
         "message": "Agent đã phân tích các biểu hiện chưa đạt. Dưới đây là lộ trình bù đắp kiến thức bắt buộc:",
