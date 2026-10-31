@@ -191,6 +191,35 @@ function showResult(score, needAttention, resultRecommendations){
     if (window.RaiBackground) window.RaiBackground.setWarning(score < selectedQuestions.length / 2);
 }
 
+let needAttentionList = [];
+
+// Duyệt qua kết quả làm bài của học sinh
+// Nếu câu 3 sai -> Thêm "3" hoặc "HV3" vào mảng
+if (cau1Sai) needAttentionList.push("1"); 
+if (cau2Sai) needAttentionList.push("2");
+if (cau3Sai) needAttentionList.push("3");
+if (cau4Sai) needAttentionList.push("4");
+if (cau5Sai) needAttentionList.push("5"); 
+if (cau6Sai) needAttentionList.push("6");
+if (cau7Sai) needAttentionList.push("7");
+if (cau8Sai) needAttentionList.push("8");
+if (cau9Sai) needAttentionList.push("9");
+
+// Gửi lên API
+fetch('/api/get-learning-content', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        studentCode: "HS_001",
+        need_attention: needAttentionList // Truyền danh sách câu sai vào đây
+    })
+})
+.then(res => res.json())
+.then(data => {
+    localStorage.setItem("learningData", JSON.stringify(data));
+    window.location.href = "learning.html";
+});
+
 function finishQuiz(){
     if (hasSubmitted) return;
     hasSubmitted = true;
