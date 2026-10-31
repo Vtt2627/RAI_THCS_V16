@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #060913;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 30px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#bg-canvas-3d{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    z-index: -1;
+    pointer-events: none;
+}
+
+body > *:not(#bg-canvas-3d){
+    position: relative;
+    z-index: 1;
+}
+
+body > h1,
+body > p,
+.container,
+#startSection,
+#quiz,
+#result,
+#learningSection{
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2,h3,h4{
+    font-family: 'Sora', 'Inter', sans-serif;
+    font-weight: 600;
+    color: #f8fafc;
+}
+
+h1{
+    font-family: 'Be Vietnam Pro', sans-serif;
+    text-align: center;
+    font-weight: 700;
+    font-size: 34px;
+    letter-spacing: 0.3px;            
+    line-height: 1.5;         
+    padding-top: 15px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #7dd3fc 0%, #e0f2fe 45%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(125, 211, 252, 0.45),
+                0 0 22px rgba(196, 181, 253, 0.25);
+    filter: none !important;   
+}
+
+body > p {
+    text-align: center;
+    line-height: 1.7;
+    color: #b6c2d9;
+    margin-bottom: 10px;
+}
+
+p{
+    line-height: 1.6;
+    color: #b6c2d9;
+}
+
+a{
+    color: #7dd3fc;
+    font-weight: 600;
+}
+
+.container,
+#startSection,
+#quiz,
+#result,
+#learningSection{
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    padding: 25px;
+    margin-top: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+#startSection label{
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+#studentCodeDisplay{
+    font-family: 'Sora', 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #7dd3fc;
+    background: rgba(125, 211, 252, 0.08);
+    border: 1px solid rgba(125, 211, 252, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+input[type="text"]{
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+
+input[type="text"]:focus{
+    outline: none;
+    border-color: #7dd3fc;
+    box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.2);
+}
+
+button{
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Sora', 'Inter', sans-serif;
+    background-color: #2563eb;
+    color: #fff;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+button:hover{
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+button:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:disabled:hover{
+    background-color: #2563eb;
+    transform: none;
+}
+
+#questionText{
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Sora', 'Inter', sans-serif;
+}
+
+#options label{
+    display: block;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+#options label:hover{
+    background-color: rgba(125, 211, 252, 0.12);
+    border-color: #7dd3fc;
+    transform: translateX(3px);
+}
+
+#scoreResult{
+    font-size: 26px;
+    font-weight: 700;
+    font-family: 'Sora', 'Inter', sans-serif;
+    text-align: center;
+    color: #7dd3fc;
+}
+
+#attentionResult,
+#recommendationResult{
+    line-height: 1.7;
+}
+
+.researchLink{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.noteBox{
+    background-color: rgba(240, 217, 140, 0.12);
+    border: 1px solid #f0d98c;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #fde68a;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.04);
+    margin-top: 10px;
+    color: #e2e8f0;
+}
+
+table th,
+table td{
+    border: 1px solid #334155;
+    padding: 10px;
+    text-align: left;
+}
+
+table th{
+    background-color: #2563eb;
+    color: white;
+    font-weight: 700;
+    font-family: 'Sora', 'Inter', sans-serif;
+}
+
+table tr:nth-child(even){
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+#clearDataButton{
+    background-color: #dc2626;
+}
+
+#clearDataButton:hover{
+    background-color: #b91c1c;
+}
+
+
+.lesson-card {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(125, 211, 252, 0.2);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.lesson-card h3 {
+    color: #7dd3fc;
+    font-size: 20px;
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+/* Khung nhúng video chuẩn tỉ lệ 16:9 */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 15px 0;
+    background: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Khung đọc lý thuyết */
+.reading-box {
+    background: rgba(30, 41, 59, 0.6);
+    border-left: 4px solid #38bdf8;
+    padding: 18px;
+    border-radius: 8px;
+    white-space: pre-line;
+    line-height: 1.7;
+    color: #cbd5e1;
+    margin: 15px 0;
+}
+
+/* Nút xác nhận "Tôi đã hiểu nội dung" màu xanh lá cây đặc trưng */
+.understood-btn {
+    background-color: #059669;
+}
+.understood-btn:hover {
+    background-color: #047857;
+}
+
+/* Khung câu hỏi kiểm tra ngẫu nhiên */
+.check-quiz-box {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px dashed rgba(125, 211, 252, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Nút nộp câu hỏi kiểm tra nhỏ */
+.submit-check-btn {
+    background-color: #4f46e5;
+}
+.submit-check-btn:hover {
+    background-color: #4338ca;
+}
