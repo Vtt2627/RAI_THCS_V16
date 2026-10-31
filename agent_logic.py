@@ -31,46 +31,57 @@ def load_json_file(filename):
 
 def get_learning_path(need_attention):
     """
-    Phân tích thông minh và bao hàm toàn diện 1-1:
-    - Tự động chuẩn hóa mọi định dạng mã lỗi từ client gửi lên (vd: '3', 'HV3', 'Q3').
-    - Nếu danh sách rỗng hoặc None -> Đạt tuyệt đối -> Trả về lộ trình nâng cao.
-    - Nếu có lỗi -> Trích xuất chính xác 100% các bài học bù đắp tương ứng.
+    Logic phân tích 1-1 thông minh:
+    - Nếu need_attention rỗng -> Đạt tuyệt đối -> Trả về nâng cao (data_advanced.json).
+    - Nếu có lỗi -> Tự động chuẩn hóa và dò tìm linh hoạt theo số thứ tự hoặc mã khóa trong remedial_data.
     """
     advanced_data = load_json_file("data_advanced.json")
     remedial_data = load_json_file("data_remedial.json")
     
-    # Nếu không có lỗi nào được gửi lên -> Đạt tuyệt đối
+    # 1. Nếu không có câu nào sai -> Đạt tuyệt đối
     if not need_attention or len(need_attention) == 0:
         return {
             "message": "Bạn đã hoàn thành xuất sắc toàn bộ bài đánh giá! Dưới đây là lộ trình nâng cao:",
             "content": advanced_data
         }
     
-    # Lọc chuẩn xác 1-1 với cơ chế dò tìm linh hoạt các định dạng khóa
+    # 2. Lọc thông minh 1-1 với thuật toán khớp mờ (Fuzzy Matching)
     filtered_content = {}
     for code in need_attention:
         code_str = str(code).strip()
+        matched = False
         
-        # Các biến thể định dạng có thể xảy ra từ phía giao diện
-        possible_keys = [
+        # Thử các biến thể chuỗi trực tiếp
+        variants = [
             code_str,
-            f"HV{code_str}",
-            f"Q{code_str}",
-            code_str.replace("HV", ""),
-            code_str.replace("Q", "")
+            code_str.upper(),
+            code_str.lower(),
         ]
         
-        matched = False
-        for key in possible_keys:
-            if key in remedial_data:
-                filtered_content[key] = remedial_data[key]
+        for v in variants:
+            if v in remedial_data:
+                filtered_content[v] = remedial_data[v]
                 matched = True
                 break
-        
-        # Nếu vẫn chưa khớp trực tiếp, quét gần đúng trong kho remedial_data
+                
+        if matched:
+            continue
+            
+        # Trích xuất phần số từ mã lỗi (ví dụ: lấy số '3' từ "HV03", "HV3", "Q3")
+        code_digits = "".join(filter(str.isdigit, code_str))
+        if code_digits:
+            num = int(code_digits)
+            for r_key in remedial_data:
+                r_digits = "".join(filter(str.isdigit, str(r_key)))
+                if r_digits and int(r_digits) == num:
+                    filtered_content[r_key] = remedial_data[r_key]
+                    matched = True
+                    break
+                    
+        # Dự phòng cuối: Kiểm tra chuỗi con chứa nhau
         if not matched:
             for r_key in remedial_data:
-                if code_str.lower() in r_key.lower():
+                if code_str.lower() in str(r_key).lower() or str(r_key).lower() in code_str.lower():
                     filtered_content[r_key] = remedial_data[r_key]
                     break
 
