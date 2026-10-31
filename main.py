@@ -10,10 +10,10 @@ from agent_logic import get_learning_path, get_ai_chat_response
 
 app = FastAPI()
 
-# Định nghĩa cấu trúc dữ liệu đầu vào: Mặc định là None để biết học sinh chưa làm bài đánh giá
+# Định nghĩa cấu trúc dữ liệu đầu vào nhận từ bài đánh giá ở frontend
 class LearningRequest(BaseModel):
     studentCode: Optional[str] = "HS_001"
-    need_attention: Optional[List[str]] = None
+    need_attention: Optional[List[str]] = []
 
 class ChatRequest(BaseModel):
     studentCode: Optional[str] = "HS_001"
@@ -21,7 +21,7 @@ class ChatRequest(BaseModel):
 
 @app.post("/api/get-learning-content")
 def api_get_learning_content(data: LearningRequest):
-    """Xử lý logic phân tích bài làm thực tế của học sinh."""
+    """Nhận kết quả phân tích từ frontend và trả về lộ trình học tập tương ứng."""
     try:
         result = get_learning_path(data.need_attention)
         return result
@@ -30,7 +30,7 @@ def api_get_learning_content(data: LearningRequest):
 
 @app.post("/api/chat")
 def api_chat(data: ChatRequest):
-    """Xử lý hỏi đáp trực tiếp với trợ lý Agent qua Gemini API."""
+    """Endpoint xử lý chat trực tiếp với trợ lý Agent."""
     try:
         reply = get_ai_chat_response(data.message)
         return {"reply": reply}
@@ -41,11 +41,11 @@ def api_chat(data: ChatRequest):
 @app.get("/index.html")
 @app.get("/learning.html")
 def serve_frontend():
-    """Phục vụ file giao diện chính xác."""
+    """Phục vụ file giao diện người dùng."""
     if os.path.exists("learning.html"):
         return FileResponse("learning.html")
     elif os.path.exists("index.html"):
         return FileResponse("index.html")
-    return {"message": "Server đang hoạt động nhưng không tìm thấy file giao diện."}
+    return {"message": "Server đang hoạt động."}
 
 app.mount("/", StaticFiles(directory=".", html=True), name="static")

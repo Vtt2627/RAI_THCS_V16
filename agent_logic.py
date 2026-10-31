@@ -5,17 +5,23 @@ import google.generativeai as genai
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
-    
+
 def get_ai_chat_response(message):
-    """Xử lý hỏi đáp trực tiếp với trợ lý AI qua Gemini API cho mọi người dùng."""
+    """Xử lý hỏi đáp trực tiếp với trợ lý Agent qua Gemini API."""
     if not GEMINI_API_KEY:
         return "Xin lỗi, hệ thống chưa được cấu hình khóa GEMINI_API_KEY trên server."
-    try:
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        response = model.generate_content(message)
-        return response.text
-    except Exception as e:
-        return f"Xin lỗi, hiện tại tôi không thể kết nối tới mô hình AI. Chi tiết lỗi: {str(e)}"
+    
+    # Sử dụng model chuẩn và ổn định
+    for model_name in ["gemini-1.5-flash", "gemini-1.5-pro"]:
+        try:
+            model = genai.GenerativeModel(model_name)
+            response = model.generate_content(message)
+            if response and response.text:
+                return response.text
+        except Exception:
+            continue
+            
+    return "Xin lỗi, hiện tại không thể kết nối tới mô hình AI. Vui lòng kiểm tra lại khóa API."
 
 def load_json_file(filename):
     """Hàm đọc an toàn các tệp JSON dữ liệu."""
@@ -29,38 +35,28 @@ def load_json_file(filename):
 
 def get_learning_path(need_attention):
     """
-    Phân tích nghiêm ngặt theo đúng luồng thực tế:
-    - Nếu need_attention là None (chưa làm bài đánh giá): Yêu cầu học sinh hoàn thành bài test trước.
-    - Nếu need_attention là danh sách rỗng [] (đã làm bài và đạt tuyệt đối): Trả về lộ trình nâng cao.
-    - Nếu need_attention có dữ liệu (có lỗi sai): Trích xuất chính xác 1-1 các bài học bù đắp tương ứng.
+    Phân tích nghiêm ngặt 1-1 dựa trên kết quả đánh giá thực tế từ frontend:
+    - Nếu need_attention là danh sách rỗng []: Học sinh đạt tuyệt đối -> Trả về lộ trình nâng cao.
+    - Nếu need_attention có chứa các mã lỗi: Chỉ trích xuất đúng và đủ bài học bù đắp của các mã đó, 
+      tuyệt đối không chọn đại hay gán bừa.
     """
     advanced_data = load_json_file("data_advanced.json")
     remedial_data = load_json_file("data_remedial.json")
     
-    # Trường hợp 1: Chưa thực hiện bài đánh giá (None)
-    if need_attention is None:
+    # Trường hợp học sinh đạt tuyệt đối (danh sách rỗng)
+    if not need_attention or len(need_attention) == 0:
         return {
-            "status": "pending_assessment",
-            "message": "Vui lòng hoàn thành bài đánh giá năng lực trước khi xem lộ trình học tập cá nhân hóa.",
-            "content": {}
-        }
-    
-    # Trường hợp 2: Đã làm bài và đạt tuyệt đối (danh sách rỗng [])
-    if len(need_attention) == 0:
-        return {
-            "status": "advanced",
             "message": "Bạn đã hoàn thành xuất sắc toàn bộ bài đánh giá! Dưới đây là lộ trình nâng cao:",
             "content": advanced_data
         }
     
-    # Trường hợp 3: Có lỗi cần khắc phục -> Lọc chuẩn xác 1-1, cấm gán bừa
+    # Lọc chuẩn xác 1-1 theo đúng mã lỗi học sinh gặp phải
     filtered_content = {}
     for code in need_attention:
         if code in remedial_data:
             filtered_content[code] = remedial_data[code]
 
     return {
-        "status": "remedial",
-        "message": f"Agent đã phân tích và trích xuất thành công {len(filtered_content)} bài học bù đắp tương ứng với các nội dung bạn làm chưa đạt:",
+        "message": f"Agent đã phân tích và trích xuất thành công {len(filtered_content)} bài học bù đắp tương ứng với các nội dung cần khắc phục:",
         "content": filtered_content
     }
