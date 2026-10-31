@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>RAI-THCS - Phân tích dữ liệu Agent</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            #loadingOverlay {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; width: 100vw; height: 100vh;
+                background: rgba(6, 9, 19, 0.85);
+                backdrop-filter: blur(8px);
+                z-index: 9999;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .spinner {
+                width: 60px;
+                height: 60px;
+                border: 5px solid rgba(125, 211, 252, 0.2);
+                border-top: 5px solid #7dd3fc;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                margin-bottom: 20px;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="bg-canvas-3d"></canvas>
+        
+        <div id="loadingOverlay">
+            <div class="spinner"></div>
+            <p id="loadingText" style="color: #7dd3fc; font-size: 18px; font-weight: 600;">Agent đang phân tích dữ liệu cá nhân...</p>
+        </div>
+
+        <div class="container">
+            <h1>PHÂN TÍCH KẾT QUẢ ĐÁNH GIÁ</h1>
+            <p>Hệ thống tổng hợp dữ liệu bài làm trước khi chuyển giao cho Trợ lý AI.</p>
+            <hr>
+            <section id="researchDashboard">
+                <h2>Kết quả gần nhất</h2>
+                <p id="researchTotalResults"></p>
+                <p id="researchAverageScore"></p>
+            </section>
+            <section>
+                <h2>Chi tiết biểu hiện</h2>
+                <div id="researchBehaviorAnalysis"></div>
+            </section>
+            
+            <p style="text-align: center; margin-top: 25px;">
+                <button id="researchNextBtn">Tiếp tục (Agent phân tích lộ trình)</button>
+            </p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="background.js"></script>
+        <script src="data.js"></script>
+        <script src="research.js"></script>
+    </body>
+</html>

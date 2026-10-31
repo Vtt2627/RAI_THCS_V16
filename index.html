@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RAI THCS Final</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <canvas id="bg-canvas-3d"></canvas>
+        <h1>KẾT QUẢ ĐÁNH GIÁ MỘT SỐ BIỂU HIỆN SỬ DỤNG AI CÓ TRÁCH NHIỆM</h1>
+        <p>Hệ thống giúp học sinh lớp 9 tự đánh giá cách xử lí một số tình huống khi sử dụng AI</p>
+                <div id="startSection">
+                    <label>Mã học sinh của bạn:</label>
+                    <div id="studentCodeDisplay">Đang cấp mã học sinh...</div>
+                    <button id="startButton" disabled>Bắt đầu đánh giá</button>
+                </div>
+                <div id="quiz" style="display: none;">
+                    <h2 id="questionNumber"></h2>
+                    <p id="questionText"></p>
+                    <div id="options"></div>
+                    <button id="nextButton">Tiếp tục</button>
+                    <br>
+                </div>
+                <div id="result" style="display: none;">
+                    <h2>KẾT QUẢ ĐÁNH GIÁ</h2>
+                    <p id="scoreResult"></p>
+                    <h3>Các nội dung cần chú ý</h3>
+                    <div id="attentionResult"></div>
+                    <h3>Khuyến nghị</h3>
+                    <div id="recommendationResult"></div>
+                    <p class="researchLink"><a href="research.html">Xem khu vực nghiên cứu (dữ liệu trên thiết bị này</a></p>
+                </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>                
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+        <script src="background.js"></script>
+        <script src="data.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
