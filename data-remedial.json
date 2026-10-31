@@ -1,0 +1,326 @@
+{
+    "HV01": {
+        "title": "Kiểm tra thông tin do AI cung cấp và kiểm chứng bằng nguồn đáng tin",
+        "video_url": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
+        "reading_content": "Khi nhận một câu trả lời từ AI, việc đầu tiên của bạn không nhất thiết là đi tìm nguồn ngay. Bạn cần hiểu câu trả lời đang nói gì và nó có đứng vững về mặt lập luận hay không. Một đoạn văn có thể đúng chính tả, dùng nhiều thuật ngữ và trình bày rất tự tin, nhưng những đặc điểm ấy không chứng minh nội dung chính xác. Hướng dẫn của Đại học Abertay lưu ý rằng văn phong trôi chảy, chi tiết có vẻ chính xác, đường dẫn hoặc sự đồng ý của một AI khác đều không tự chứng minh độ tin cậy. intranet.abertay.ac \n\nBạn hãy tách câu trả lời thành những phát biểu nhỏ. Đâu là sự kiện có thể kiểm tra? Đâu là ý kiến? Đâu là lời khuyên hoặc dự đoán? Sau đó, xem AI có chỉ rõ thời gian, đối tượng và điều kiện áp dụng hay không. Chẳng hạn, câu “AI giúp học sinh học tốt hơn” còn quá rộng. Bạn cần hỏi: học sinh nào, học môn gì, dùng theo cách nào và “tốt hơn” được hiểu là hiểu bài sâu hơn hay chỉ hoàn thành bài nhanh hơn? \n\nBước tiếp theo là xem bằng chứng có thực sự dẫn tới kết luận không. Một ví dụ thành công chưa đủ để khẳng định mọi người đều thành công. Một nghiên cứu trên một nhóm nhỏ cũng không tự chứng minh kết quả đúng với mọi trường học. Abertay đặc biệt nhắc người học kiểm tra phạm vi, mức chắc chắn, những giới hạn bị mất đi và khả năng AI ghép các dữ kiện đúng thành một kết luận chưa được chứng minh. intranet.abertay.ac \n\nBạn cũng cần tìm phần còn thiếu. Nếu AI đề xuất một giải pháp chỉ nói đến lợi ích, hãy xem chi phí, điều kiện thực hiện, rủi ro và những người bị ảnh hưởng đã được cân nhắc chưa. Ví dụ, khi AI đề xuất cả lớp dùng chung một ứng dụng học tập, bạn có thể nhận ra câu trả lời chưa xét quyền riêng tư hoặc khả năng truy cập của từng bạn. Đó là nhận xét về chất lượng thông tin, không phải lời khẳng định rằng ứng dụng chắc chắn nguy hiểm. \n\nKết thúc HV01, bạn cần viết được nhận định có lí do: phần nào hợp lí, phần nào diễn đạt quá mức và phần nào chưa đủ căn cứ. Nếu một phát biểu quan trọng cần bằng chứng bên ngoài, hãy chuyển sang HV06. Video về mô hình ngôn ngữ giúp giải thích vì sao bước đánh giá này cần thiết: công cụ có thể tạo câu trả lời hữu ích nhưng vẫn đưa ra kết quả sai. youtube \n\nNguồn đối chiếu: Abertay University — Evaluating AI outputs. Tài liệu này hỗ trợ việc phân biệt phát biểu, lập luận, phạm vi và phần bị bỏ sót. intranet.abertay.ac",
+        "check_questions": [
+            {
+                "ID1": {
+                    "question": "Theo tài liệu Đại học Abertay, yếu tố nào sau đây KHÔNG tự chứng minh độ tin cậy của câu trả lời do AI cung cấp?",
+                    "options": [
+                        "A. Kết quả kiểm chứng độc lập từ các nguồn tài liệu khoa học gốc.",
+                        "B. Văn phong trôi chảy, chi tiết có vẻ chính xác hoặc các đường dẫn đính kèm.",
+                        "C. Dữ liệu từ các cơ quan kiểm định giáo dục có thẩm quyền."
+                    ],
+                    "answer": 1
+                },
+                "ID2": {
+                    "question": "Khi phân tích một phát biểu của AI như 'AI giúp học sinh học tốt hơn', bạn cần đặt ra câu hỏi gì để thu hẹp phạm vi?",
+                    "options": [
+                        "A. Học sinh nào, học môn gì, dùng theo cách nào và 'tốt hơn' nghĩa là gì?",
+                        "B. AI được lập trình bằng ngôn ngữ lập trình nào?",
+                        "C. Chi phí để mua bản quyền phần mềm AI này là bao nhiêu?"
+                    ],
+                    "answer": 0
+                },
+                "ID3": {
+                    "question": "Nếu một giải pháp do AI đề xuất chỉ tập trung nói đến lợi ích, bạn cần phải xem xét thêm điều gì?",
+                    "options": [
+                        "A. Tốc độ phản hồi và giao diện màu sắc của phần mềm.",
+                        "B. Số lượng người dùng đã tải ứng dụng đó trên toàn cầu.",
+                        "C. Chi phí, điều kiện thực hiện, rủi ro và các đối tượng bị ảnh hưởng."
+                    ],
+                    "answer": 2
+                }
+            }
+        ]
+    },
+    "HV02": {
+        "title": "Kiểm tra kết quả do AI hỗ trợ",
+        "video_url": "https://www.youtube.com/watch?v=UlXXRd3HGT0",
+        "reading_content": "Một kết quả do AI hỗ trợ cần được kiểm tra bằng phương pháp phù hợp với nhiệm vụ. Nếu AI giúp tính toán, bạn cần tính lại hoặc thử điều kiện. Nếu AI hỗ trợ viết chương trình, bạn cần chạy thử và quan sát đầu ra. Nếu AI dịch văn bản, bạn cần đối chiếu với bản gốc. Abertay phân biệt rõ những cách kiểm tra này: phép tính, mã lệnh, bản dịch và bản tóm tắt không thể được đánh giá chỉ bằng một thao tác chung là “đọc thấy hợp lí”. intranet.abertay.ac \n\nTrước khi kiểm tra, hãy viết lại yêu cầu ban đầu. Dữ liệu đầu vào là gì? Kết quả phải thỏa mãn điều kiện nào? Đơn vị, giới hạn và định dạng có được quy định không? Bạn đang cần tìm lỗi giữa kết quả và nhiệm vụ, chứ không phải đánh giá xem AI có diễn đạt hay hay không. Một câu trả lời dài và thuyết phục vẫn có thể không giải đúng bài được giao. \n\nVí dụ, AI đưa ra các lệnh để nhân vật đi từ ô A tới ô B trong một lưới. Bạn hãy đi từng lệnh, đánh dấu vị trí sau mỗi bước rồi so với đích. Nếu nhân vật dừng sớm một ô, bạn đã xác định được một lỗi có thể quan sát. Sau khi sửa, hãy chạy lại từ đầu; không nên mặc nhiên cho rằng thêm một lệnh là mọi thứ đã đúng. Video “Debugging” của Code.org minh họa trực tiếp cách xem từng bước, tìm chỗ sai, sửa và chạy lại. youtube \n\nVới bài toán, cách kiểm tra có thể là thay nghiệm vào biểu thức ban đầu hoặc tính lại bằng một phương pháp đã học. Với bản tóm tắt, bạn đối chiếu các ý chính, điều kiện và mức độ chắc chắn với văn bản gốc. Với bản dịch, bạn kiểm tra tên riêng, con số, thuật ngữ, ý nghĩa và giọng điệu. Hướng dẫn Abertay cũng nhấn mạnh kiểm tra đầu vào, đơn vị, công thức, giả định và những trường hợp đã biết kết quả đối với phép tính hoặc mã lệnh. intranet.abertay.ac \n\nNếu bạn chưa đủ kiến thức để kiểm tra một kết quả quan trọng, hãy nhờ giáo viên thay vì nhận nó là đúng. Bạn có thể hỏi AI giải thích lỗi, nhưng lời giải thích ấy không thay thế phép thử độc lập. Sản phẩm của HV02 là bằng chứng thao tác: bạn đã thử điều gì, quan sát được gì và kết quả thay đổi ra sao sau khi sửa. Đó là điểm khác với HV01, nơi trọng tâm là chất lượng thông tin và lập luận. \n\nNguồn đối chiếu: Abertay University — Evaluating AI outputs, mục “Match the check to the type of output”. intranet.abertay.ac",
+        "check_questions": [
+            {
+                "ID4": {
+                    "question": "Theo hướng dẫn của Đại học Abertay, các loại kết quả như phép tính, mã lệnh hay bản dịch nên được đánh giá như thế nào?",
+                    "options": [
+                        "A. Chỉ cần đọc thấy hợp lý và trôi chảy là đạt yêu cầu.",
+                        "B. Áp dụng phương pháp kiểm tra cụ thể phù hợp với đặc thù từng loại nhiệm vụ.",
+                        "C. Mặc định là chính xác nếu AI đưa ra câu trả lời dài."
+                    ],
+                    "answer": 1
+                },
+                "ID5": {
+                    "question": "Trong ví dụ chạy mã lệnh cho nhân vật di chuyển, sau khi tìm được lỗi và sửa lại, bạn cần làm bước gì tiếp theo?",
+                    "options": [
+                        "A. Nộp ngay bài làm vì đã chắc chắn sửa đúng.",
+                        "B. Chạy lại toàn bộ từ đầu để kiểm tra xem mọi thứ đã khớp chưa.",
+                        "C. Yêu cầu AI viết lại toàn bộ mã lệnh mới từ đầu."
+                    ],
+                    "answer": 1
+                },
+                "ID6": {
+                    "question": "Sản phẩm cốt lõi cần đạt được sau khi thực hiện hành vi kiểm tra ở HV02 là gì?",
+                    "options": [
+                        "A. Bằng chứng thao tác ghi nhận bạn đã thử nghiệm, quan sát lỗi và kết quả thay đổi ra sao.",
+                        "B. Bản tổng hợp lời khen dành cho câu trả lời mượt mà của AI.",
+                        "C. Danh sách các mã lệnh do AI sinh ra chưa qua chỉnh sửa."
+                    ],
+                    "answer": 0
+                }
+            }
+        ]
+    },
+    "HV03": {
+        "title": "Ghi nhận việc sử dụng AI khi cần thiết",
+        "video_url": "https://www.youtube.com/watch?v=XW1KFx92QC4",
+        "reading_content": "Ghi nhận việc sử dụng AI là giải thích công cụ đã tham gia vào quá trình làm việc của bạn như thế nào. Nó giúp người đọc phân biệt phần hỗ trợ của công cụ với những lựa chọn, phân tích và nội dung bạn tự thực hiện. MLA lưu ý rằng ghi nhận việc sử dụng AI rộng hơn việc trích dẫn: trích dẫn chỉ ra một nội dung cụ thể, còn ghi nhận có thể cần mô tả cả vai trò của AI trong nghiên cứu, hình thành ý tưởng và soạn thảo. style.mla \n\nTrước khi sử dụng, bạn cần kiểm tra quy định của bài tập. Có nhiệm vụ cho phép AI gợi ý dàn ý nhưng không cho phép tạo toàn bộ bài viết. Có nhiệm vụ yêu cầu nộp nhật kí sử dụng hoặc mô tả công cụ ngay trong bài. Video của Thư viện Đại học Adelaide nhấn mạnh rằng cách ghi nhận và loại minh chứng cần lưu phụ thuộc yêu cầu của công việc, vì vậy phải kiểm tra trước khi dùng. youtube \n\nTrong bộ học liệu này, một ghi chú thực hành nên làm rõ bốn điểm: bạn dùng công cụ nào; dùng để làm gì; phần đầu ra nào được đưa vào sản phẩm; bạn đã điều chỉnh và kiểm tra ra sao. Ví dụ: “Tôi dùng công cụ AI để gợi ý ba cách tổ chức bài trình bày. Tôi chọn một cấu trúc, tự viết nội dung, bỏ hai ví dụ không phù hợp và kiểm tra dữ kiện bằng tài liệu của cơ quan công bố.” Mẫu này cho thấy hoạt động thực tế, thay vì chỉ ghi “có tham khảo AI”. \n\nBạn nên lưu quá trình ở mức đủ để giải thích bài làm. Có thể ghi lại câu lệnh, đầu ra đã sử dụng và những thay đổi quan trọng. Không nhất thiết công khai toàn bộ lịch sử trò chuyện cho mọi người; nếu trong đó có thông tin riêng tư, hãy hỏi giáo viên cách nộp bản phù hợp. Video Adelaide đề xuất ghi nhận công cụ, câu lệnh, đầu ra và cách sử dụng trong sản phẩm cuối. youtube \n\nCần phân biệt minh bạch về AI với chứng minh dữ kiện. Nếu AI gợi ý một nhận định từ báo cáo, bạn vẫn cần mở báo cáo, đọc và dẫn nguồn gốc. MLA nói rõ đầu ra AI không phải nguồn theo nghĩa truyền thống và có thể thiếu bối cảnh hoặc chứa lỗi. style.mla \n\nKhi hoàn thành HV03, người khác phải hiểu được AI hỗ trợ chỗ nào và bạn chịu trách nhiệm chỗ nào. Khai báo trung thực không tự biến một cách dùng bị cấm thành được phép. Vì vậy, ghi nhận cần đi cùng việc tuân thủ yêu cầu bài tập, không phải là một dòng bổ sung để hợp thức hóa bài đã làm.\n\nNguồn đối chiếu: MLA — Beyond Citation: Describing AI Use in Your Work. style.mla",
+        "check_questions": [
+            {
+                "ID7": {
+                    "question": "Theo tài liệu của MLA, điểm khác biệt giữa ghi nhận việc sử dụng AI và trích dẫn thông thường là gì?",
+                    "options": [
+                        "A. Ghi nhận sử dụng AI có thể mô tả cả vai trò của AI trong nghiên cứu, hình thành ý tưởng và soạn thảo.",
+                        "B. Trích dẫn thông thường dùng để thay thế hoàn toàn lời văn của người viết.",
+                        "C. Ghi nhận sử dụng AI chỉ áp dụng cho các bài toán tính toán số liệu."
+                    ],
+                    "answer": 0
+                },
+                "ID8": {
+                    "question": "Một ghi chú minh bạch về việc sử dụng AI trong bài nộp cần làm rõ những thông tin nào?",
+                    "options": [
+                        "A. Chỉ cần dán đường link trò chuyện với AI ở cuối bài.",
+                        "B. Công cụ đã dùng, mục đích sử dụng, phần đầu ra được chọn và cách bạn điều chỉnh/kiểm tra.",
+                        "C. Viết một dòng ghi chú ngắn: 'Bài này có dùng AI'."
+                    ],
+                    "answer": 1
+                },
+                "ID9": {
+                    "question": "Theo quy định MLA, câu trả lời do AI tạo ra có được coi là một nguồn tài liệu truyền thống không?",
+                    "options": [
+                        "A. Có, AI được tính là một tác giả chính thống trong mọi nghiên cứu.",
+                        "B. Không, vì đầu ra AI có thể thiếu bối cảnh hoặc chứa lỗi, vẫn cần kiểm tra nguồn gốc.",
+                        "C. Có, miễn là câu trả lời đó được nhiều học sinh sử dụng."
+                    ],
+                    "answer": 1
+                }
+            }
+        ]
+    },
+    "HV04": {
+        "title": "Bảo vệ thông tin cá nhân khi sử dụng AI",
+        "video_url": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
+        "reading_content": "Bảo vệ thông tin cá nhân bắt đầu trước khi bạn bấm gửi. Một câu lệnh, ảnh chụp hoặc tệp đính kèm có thể chứa nhiều dữ liệu hơn phần bạn muốn AI xử lí. UNESCO yêu cầu chú ý bảo vệ quyền riêng tư khi đưa AI tạo sinh vào giáo dục; UNICEF cũng đặt bảo vệ dữ liệu và quyền riêng tư của trẻ em trong các yêu cầu đối với hệ thống AI. unesco \n\nBạn hãy xem thông tin nào có thể giúp nhận diện một người. Đó có thể là họ tên đi kèm lớp, địa chỉ, số điện thoại, mã học sinh, khuôn mặt hoặc nội dung riêng tư. Khi nhiều thông tin được ghép lại, một người có thể trở nên dễ nhận diện hơn dù từng chi tiết có vẻ bình thường. Trong bài học này, bạn được yêu cầu xem xét cả dữ liệu của bản thân lẫn dữ liệu của bạn học, giáo viên và người thân. \n\nThao tác thực hành là giữ phần cần thiết cho nhiệm vụ và bỏ phần không cần thiết. Nếu nhờ AI sửa cách diễn đạt email, bạn có thể thay tên thật bằng “người nhận”, bỏ số điện thoại và thay địa chỉ cụ thể bằng mô tả chung. Nếu học cách phân tích bảng điểm, hãy dùng dữ liệu giả do giáo viên chuẩn bị thay vì tải bảng điểm thật của cả lớp. Những thao tác này được thiết kế để biến nguyên tắc bảo vệ dữ liệu thành hành động quan sát được. \n\nBạn cũng cần kiểm tra toàn bộ ảnh và tệp trước khi gửi. Một ảnh bài tập có thể chứa tên tài khoản ở góc màn hình, tin nhắn phía sau hoặc hình ảnh của người khác. Việc bạn chỉ muốn AI đọc một câu hỏi không làm những thông tin còn lại biến mất. Nếu chưa biết dữ liệu có được phép chia sẻ hay không, lựa chọn phù hợp là dừng lại và hỏi người phụ trách. \n\nKhông nên mặc định mọi công cụ AI đều có cùng chính sách lưu trữ và huấn luyện. Bạn cần sử dụng công cụ được nhà trường cho phép và làm theo hướng dẫn áp dụng cho tài khoản đang dùng. UNESCO nhấn mạnh việc đánh giá công cụ, bảo vệ dữ liệu và thiết kế sử dụng phù hợp độ tuổi, thay vì chỉ dựa vào khả năng tạo câu trả lời. unesco \n\nKhi hoàn thành HV04, bạn phải tạo được một phiên bản yêu cầu học tập vẫn dùng được nhưng đã giảm thông tin riêng tư không cần thiết. Mục tiêu không phải là thuộc một danh sách dữ liệu cấm. Bạn cần biết dừng trước khi chia sẻ, nhận diện người có thể bị ảnh hưởng và giải thích vì sao một chi tiết cần được giữ lại hoặc loại bỏ.\n\nNguồn đối chiếu: UNESCO — Guidance for generative AI in education and research và UNICEF — Guidance on AI and children. unicef",
+        "check_questions": [
+            {
+                "ID10": {
+                    "question": "Theo UNESCO và UNICEF, mối quan tâm hàng đầu khi đưa các công cụ AI vào học đường là gì?",
+                    "options": [
+                        "A. Đảm bảo tốc độ sinh văn bản của AI đạt mức tối đa.",
+                        "B. Bảo vệ dữ liệu cá nhân và quyền riêng tư của người học.",
+                        "C. Tăng số lượng câu hỏi mà AI có thể giải mỗi phút."
+                    ],
+                    "answer": 1
+                },
+                "ID11": {
+                    "question": "Khi muốn nhờ AI chỉnh sửa văn bản chứa thông tin cá nhân, bạn nên làm gì trước khi tải tệp lên?",
+                    "options": [
+                        "A. Giữ nguyên toàn bộ danh tính thật để AI xử lý chính xác hơn.",
+                        "B. Đổi các thông tin nhận diện (tên, số điện thoại, địa chỉ) thành các từ mô tả chung hoặc dữ liệu giả lập.",
+                        "C. Công khai toàn bộ thông tin cá nhân lên hệ thống học tập."
+                    ],
+                    "answer": 1
+                },
+                "ID12": {
+                    "question": "Tại sao bạn cần rà soát cẩn thận các chi tiết nền trước khi gửi một ảnh chụp màn hình cho AI?",
+                    "options": [
+                        "A. AI có thể bị lỗi nếu ảnh chụp quá nhiều màu sắc.",
+                        "B. Ảnh có thể vô tình làm lộ tên tài khoản, nội dung tin nhắn riêng tư hoặc khuôn mặt của người khác.",
+                        "C. AI chỉ nhận các ảnh chụp màn hình có định dạng đen trắng."
+                    ],
+                    "answer": 1
+                }
+            }
+        ]
+    },
+    "HV05": {
+        "title": "Nhận biết nội dung có thể do AI tạo ra hoặc bị giả mạo",
+        "video_url": "https://www.youtube.com/watch?v=X994dDnmRmY",
+        "reading_content": "Nội dung trông thật chưa chắc là bằng chứng về một sự việc đã xảy ra. AI có thể tạo hình ảnh mới, chỉnh sửa hình ảnh có sẵn và tạo video từ mô tả bằng văn bản. Video của CodeAI minh họa cả khả năng tạo nhân vật không tồn tại ngoài đời. Điều này khiến bạn cần phân biệt giữa “tôi nhìn thấy nội dung” và “tôi đã xác nhận sự kiện mà nội dung mô tả”. youtube \n\nHành vi này không yêu cầu bạn đoán nguồn gốc của mọi bức ảnh. Bạn cần nhận ra khi nào một nội dung đang được dùng để khiến người xem tin một người đã nói hoặc làm điều gì đó, trong khi xuất xứ chưa rõ. Hãy hỏi ai đăng đầu tiên, nội dung lấy từ đâu, có bản gốc không và người đăng có cung cấp bối cảnh đủ để kiểm tra không. Nếu chỉ có một ảnh chụp màn hình chuyển tiếp, bạn cần ghi nhận giới hạn ấy. \n\nVới giọng nói, sự giống nhau không đủ chứng minh danh tính. FTC cảnh báo kẻ lừa đảo có thể dùng đoạn âm thanh của người thân được đăng trực tuyến để tạo giọng nói giống họ. Vì vậy, một đoạn ghi âm giống giọng giáo viên hoặc người nhà vẫn cần được xác nhận nếu đi kèm yêu cầu quan trọng. consumer.ftc \n\nTrong bộ học liệu này, các chi tiết bất thường về hình ảnh hoặc âm thanh chỉ được dùng để đặt câu hỏi, không dùng làm bằng chứng kết luận. Bạn không nên viết “ảnh này chắc chắn do AI tạo vì bàn tay nhìn lạ”. Thay vào đó, hãy viết “chi tiết này khiến tôi cần tìm bản gốc hoặc nguồn xác nhận”. Cách ghi này giữ đúng mức chắc chắn mà bạn thực sự có. \n\nBạn cũng cần phân biệt nội dung tạo sinh với hành vi lừa dối. Một hình minh họa được ghi rõ là do AI tạo có mục đích khác với ảnh giả được trình bày như ảnh chụp một sự kiện thật. Nhiệm vụ học tập là xem nội dung đang được giới thiệu như thế nào, người xem có thể hiểu sai điều gì và cần thêm bằng chứng gì trước khi sử dụng. \n\nNếu phát hiện khả năng giả mạo, bạn chưa phải tự giải quyết toàn bộ sự việc. HV05 kết thúc ở việc nhận ra sự chưa xác thực, nêu căn cứ và xác định điều cần kiểm tra. HV07 mới tập trung vào phản ứng an toàn khi có nguy cơ. Phân biệt hai bước này giúp bạn không nhầm giữa “tôi nghi ngờ” với “tôi đã có đủ bằng chứng”, cũng không chờ kết luận hoàn chỉnh mới tự bảo vệ mình.\n\nNguồn đối chiếu: FTC — Scammers use AI to enhance their family emergency schemes. Nguồn này bổ sung bằng chứng về giả giọng, phần mà video hình ảnh không hướng dẫn trực tiếp. consumer.ftc",
+        "check_questions": [
+            {
+                "ID13": {
+                    "question": "Theo bài học HV05, hai trạng thái nào sau đây cần được phân biệt rõ khi nhìn thấy một hình ảnh/video trực tuyến?",
+                    "options": [
+                        "A. Giữa 'tôi nhìn thấy nội dung' và 'tôi đã xác nhận sự kiện mà nội dung mô tả'.",
+                        "B. Giữa 'video độ phân giải cao' và 'video độ phân giải thấp'.",
+                        "C. Giữa 'hình ảnh có màu' và 'hình ảnh trắng đen'."
+                    ],
+                    "answer": 0
+                },
+                "ID14": {
+                    "question": "Theo cảnh báo từ Ủy ban Thương mại Liên bang (FTC), khi nghe một đoạn ghi âm có giọng nói y hệt người nhà, bạn nên ghi nhớ điều gì?",
+                    "options": [
+                        "A. Giọng nói giống nhau là bằng chứng tuyệt đối khẳng định người thân đang gọi.",
+                        "B. Âm thanh giọng nói có thể được tạo giả bằng AI, cần xác minh lại qua đường liên lạc khác.",
+                        "C. AI chưa thể mô phỏng được giọng nói của con người."
+                    ],
+                    "answer": 1
+                },
+                "ID15": {
+                    "question": "Khi thấy một điểm bất thường trên hình ảnh (như ngón tay lạ), cách nhận định chuẩn xác nhất là gì?",
+                    "options": [
+                        "A. Khẳng định 100% đây là ảnh giả do AI tạo ra.",
+                        "B. Bỏ qua và tin rằng hình ảnh hoàn toàn chính xác.",
+                        "C. Nêu rõ chi tiết bất thường này khiến bạn cần tìm bản gốc hoặc nguồn xác nhận độc lập."
+                    ],
+                    "answer": 2
+                }
+            }
+        ]
+    },
+    "HV06": {
+        "title": "Xác minh thông tin AI bằng nguồn phù hợp",
+        "video_url": "https://www.youtube.com/watch?v=vFYoa8Uo6po",
+        "reading_content": "Xác minh là đi ra ngoài câu trả lời AI để tìm bằng chứng cho một phát biểu cụ thể. Bạn cần mở nguồn, đọc phần liên quan rồi quyết định nguồn đó có hỗ trợ phát biểu hay không. MLA khuyến nghị đọc văn bản nguồn và dẫn trực tiếp nguồn ấy, vì đầu ra AI có thể thiếu bối cảnh, có lỗi hoặc không cho thấy xuất xứ đáng tin cậy. style.mla \n\nBắt đầu bằng cách viết điều cần kiểm tra thành một câu rõ ràng. “Thông tin này đúng không?” quá rộng. “Thông báo này áp dụng cho học sinh khối nào và thời điểm nào?” dễ xác minh hơn. Khi biết mình đang kiểm tra điều gì, bạn mới chọn được nguồn phù hợp. Trong bài học này, lịch thi được đối chiếu với thông báo của trường; thể lệ cuộc thi được đối chiếu với tài liệu của đơn vị tổ chức; kết quả nghiên cứu được tìm về công trình hoặc báo cáo gốc khi có thể. \n\nVideo “S.I.F.T. for Gold” giới thiệu bốn thao tác: dừng lại, tìm hiểu nguồn, tìm nguồn bổ sung và truy phát biểu về xuất xứ. Điểm hữu ích không nằm ở việc nhớ bốn chữ cái, mà ở việc không tin hoặc chia sẻ ngay trước khi hiểu ai công bố và thông tin ban đầu nói gì. youtube \n\nKhi mở một tài liệu, bạn hãy xem tác giả hoặc cơ quan, thời điểm công bố, đối tượng được nói tới và phần nội dung liên quan. Đường dẫn tồn tại chưa có nghĩa nó chứng minh điều AI vừa nói. Một báo cáo về người trưởng thành không tự áp dụng cho học sinh nhỏ tuổi. Một quy định cũ cũng có thể không trả lời câu hỏi về thời điểm hiện tại. Abertay nhấn mạnh phải đánh giá nguồn và đánh giá cách AI sử dụng nguồn thành hai việc riêng. intranet.abertay.ac \n\nBạn cần đọc vượt qua tiêu đề và đoạn trích ngắn. Nếu AI nói báo cáo “chứng minh” một giải pháp luôn hiệu quả, hãy xem tài liệu gốc có dùng mức khẳng định ấy không. Có thể nguồn chỉ ghi nhận một mối liên hệ, một kết quả trong điều kiện hẹp hoặc một điểm còn cần nghiên cứu. \n\nKết luận của bạn có thể là được nguồn hỗ trợ, chỉ đúng trong điều kiện nhất định, bị nguồn bác bỏ hoặc chưa đủ bằng chứng. Không cần ép mọi trường hợp thành đúng hay sai. Hai website nói giống nhau cũng chưa chắc là hai bằng chứng độc lập nếu cùng chép lại một thông cáo. Minh chứng tốt của HV06 là người khác có thể theo đường kiểm tra của bạn và thấy vì sao bạn đưa ra kết luận.\n\nNguồn đối chiếu: MLA — Beyond Citation và Abertay — Evaluating AI outputs. intranet.abertay.ac",
+        "check_questions": [
+            {
+                "ID16": {
+                    "question": "Hành động xác minh thông tin AI theo HV06 đòi hỏi bạn phải làm gì?",
+                    "options": [
+                        "A. Hỏi đi hỏi lại chatbot cho đến khi nó đưa ra đáp án khác.",
+                        "B. Tìm kiếm và đối chiếu trực tiếp với các nguồn tài liệu gốc độc lập ngoài AI.",
+                        "C. Chỉ cần kiểm tra xem đường link AI đưa ra có bấm vào được không."
+                    ],
+                    "answer": 1
+                },
+                "ID17": {
+                    "question": "Phương pháp 'S.I.F.T. for Gold' hướng dẫn bốn thao tác cốt lõi nào khi kiểm tra tin tức?",
+                    "options": [
+                        "A. Dừng lại (Stop), Tìm hiểu nguồn (Investigate), Tìm nguồn bổ sung (Find better coverage), Truy xuất xứ (Trace).",
+                        "B. Sao chép (Search), Lưu trữ (Save), Chỉnh sửa (Insert), Chia sẻ (Transmit).",
+                        "C. Đọc lướt (Scan), Đoán ý (Infer), Tóm tắt (Text), Đánh giá (Test)."
+                    ],
+                    "answer": 0
+                },
+                "ID18": {
+                    "question": "Khi kiểm tra tài liệu gốc do AI trích dẫn, bạn cần lưu ý điều gì về phạm vi áp dụng?",
+                    "options": [
+                        "A. Kết quả nghiên cứu trên người lớn tự động áp dụng hoàn toàn đúng cho học sinh.",
+                        "B. Phải xem xét đối tượng, thời điểm và ngữ cảnh xem nguồn đó có thực sự chứng minh phát biểu không.",
+                        "C. Chỉ cần tiêu đề tài liệu khớp từ khóa là thông tin AI đưa ra luôn đúng."
+                    ],
+                    "answer": 1
+                }
+            }
+        ]
+    },
+    "HV07": {
+        "title": "Xử lí phù hợp khi gặp nội dung đáng ngờ",
+        "video_url": "https://www.youtube.com/watch?v=QEPdo_DvakY",
+        "reading_content": "Khi một nội dung có thể gây thiệt hại, bạn không cần chứng minh chắc chắn nó do AI tạo mới được phép dừng lại. Một người tự xưng là người thân có thể yêu cầu chuyển tiền gấp. Một tài khoản mang tên giáo viên có thể gửi đường dẫn đăng nhập lạ. Trọng tâm của HV07 là lựa chọn hành động an toàn trong lúc thông tin còn chưa rõ, không phải thi nhận diện công nghệ đã được dùng. \n\nVideo FTC minh họa một cuộc gọi giả người nhà gặp nạn, cần tiền ngay và yêu cầu không kể cho ai. Bản chép lời chỉ ra cách kẻ lừa đảo đánh vào nỗi sợ để khiến người nhận hành động nhanh. Trong tình huống học tập, bạn hãy nhận ra sức ép về thời gian và sự bí mật là lí do cần tạm dừng, không phải lí do bỏ qua việc xác nhận. youtube \n\nBước đầu là không thực hiện hành động có hậu quả trước khi kiểm tra. Với yêu cầu chuyển tiền, hãy dừng chuyển. Với đường dẫn đăng nhập chưa rõ nguồn, hãy không nhập thông tin tài khoản. Sau đó, bạn chuyển sang một kênh độc lập đã biết trước. FTC khuyến nghị gọi người được cho là đang liên hệ bằng số điện thoại mà bạn biết là của họ; nếu không liên lạc được, hãy xác nhận qua người thân hoặc bạn bè của họ. consumer.ftc \n\nVí dụ, bạn nhận đoạn ghi âm giống giọng bố mẹ và một tài khoản ngân hàng để chuyển tiền. Bạn không nên chỉ hỏi lại chính tài khoản đó xem có thật không. Hãy dùng số đã lưu hoặc nhờ người lớn tin cậy cùng liên hệ. Nếu lời yêu cầu là thật, việc xác nhận giúp bạn hỗ trợ đúng người; nếu là giả, nó giúp tránh hành động theo kịch bản của người lừa đảo. \n\nVới nội dung gây hại cho bạn học, bộ học liệu yêu cầu bạn báo người có trách nhiệm theo quy trình của trường, thay vì phát tán lại để nhờ đám đông phán xét. Bạn có thể ghi lại tên tài khoản, thời điểm và đường dẫn ở mức cần thiết để báo cáo, nhưng không cần sao chép hoặc chia sẻ rộng nội dung gây hại. \n\nKết quả của HV07 là một chuỗi phản ứng phù hợp: dừng nguy cơ, xác nhận bằng kênh độc lập, tìm sự hỗ trợ và báo cáo đúng nơi. Bạn không phải tự truy tìm người đứng sau, đe dọa tài khoản hoặc công khai thông tin của người bị nghi ngờ. Mục tiêu là bảo vệ mình và người liên quan trong điều kiện chưa có đầy đủ bằng chứng.\n\nNguồn đối chiếu: FTC — Scammers use AI to enhance their family emergency schemes. consumer.ftc",
+        "check_questions": [
+            {
+                "ID19": {
+                    "question": "Khi bất ngờ nhận được tin nhắn hoặc cuộc gọi khẩn cấp yêu cầu chuyển tiền/gửi mã OTP, phản ứng an toàn đầu tiên là gì?",
+                    "options": [
+                        "A. Làm theo ngay lập tức vì sợ người thân gặp nguy hiểm.",
+                        "B. Tạm dừng mọi thao tác, không thực hiện hành động gây hậu quả ngay.",
+                        "C. Chuyển trước một nửa số tiền theo yêu cầu."
+                    ],
+                    "answer": 1
+                },
+                "ID20": {
+                    "question": "Cách xác nhận thông tin an toàn nhất được FTC khuyến nghị trong các tình huống nghi ngờ giả mạo là gì?",
+                    "options": [
+                        "A. Liên lạc lại bằng một kênh độc lập đã biết rõ (ví dụ gọi số điện thoại chính chủ đã lưu sẵn).",
+                        "B. Nhắn tin hỏi thẳng tài khoản vừa gửi tin xem họ có phải kẻ lừa đảo không.",
+                        "C. Hỏi AI xem tài khoản đó có uy tín không."
+                    ],
+                    "answer": 0
+                },
+                "ID21": {
+                    "question": "Nếu phát hiện các bài viết hoặc hình ảnh gây hại cho bạn học trên mạng, cách xử lý chuẩn theo HV07 là gì?",
+                    "options": [
+                        "A. Chia sẻ rộng rãi bài viết lên các hội nhóm để cảnh báo.",
+                        "B. Tự mình tìm đến tận nơi đe dọa người đăng bài.",
+                        "C. Ghi lại minh chứng cần thiết và báo cáo cho giáo viên hoặc người có trách nhiệm theo quy trình."
+                    ],
+                    "answer": 2
+                }
+            }
+        ]
+    },
+    "HV08": {
+        "title": "Giữ vai trò chủ động của con người khi sử dụng AI",
+        "video_url": "https://www.youtube.com/watch?v=3esuXOeAhMc",
+        "reading_content": "Bạn giữ vai trò chủ động khi vẫn quyết định mình học gì, cần công cụ hỗ trợ phần nào và vì sao chấp nhận hoặc từ chối một gợi ý. UNESCO xem năng lực khẳng định quyền chủ động trước AI là một phần của tư duy lấy con người làm trung tâm. Công nghệ cần tăng cường năng lực con người, không làm suy yếu hoặc thay thế việc ra quyết định và phát triển trí tuệ. unesco \n\nTrước khi mở AI, hãy xác định mục tiêu học tập. Nếu mục tiêu là luyện viết lập luận, việc nhận một bài hoàn chỉnh có thể khiến bạn bỏ qua phần cần luyện. Bạn có thể đổi cách yêu cầu: nhờ AI đặt câu hỏi phản biện, đưa ví dụ đối lập hoặc chỉ ra một chỗ chưa rõ trong bản tự viết. Video BBC Ideas nhấn mạnh nguyên tắc dùng AI cùng bạn làm việc, không để nó làm thay bạn. youtube \n\nGiữ chủ động không có nghĩa bạn phải bác bỏ mọi gợi ý. Bạn cần lựa chọn có lí do. Ví dụ, khi lập kế hoạch hoạt động của lớp, AI có thể đề xuất nhiều phương án. Bạn phải đối chiếu với thời gian, ngân sách, điều kiện trường học và ý kiến của người tham gia. Nếu phương án nghe hấp dẫn nhưng không thực hiện được, bạn cần sửa hoặc bỏ, không nhận nó chỉ vì công cụ gọi đó là lựa chọn tốt nhất. \n\nTrong bộ học liệu này, bạn được yêu cầu ghi một quyết định đã tự đưa ra: gợi ý nào được giữ, gợi ý nào bị loại và điều kiện nào ảnh hưởng đến lựa chọn. Nhật kí ấy không nhằm ghi mọi thao tác. Nó cho thấy bạn có tham gia bằng suy nghĩ của mình, thay vì chỉ chuyển yêu cầu rồi sao chép đầu ra. \n\nMột cách tự kiểm tra là đóng cửa sổ AI và giải thích công việc bằng lời của bạn. Bạn có hiểu khái niệm không? Có giải thích được vì sao chọn cách này không? Có xử lí được một ví dụ tương tự không? BBC Ideas cũng nhắc học sinh cần hiểu việc mình làm và trình bày quá trình, bởi học tập không chỉ là nhận đáp án đúng mà còn là suy nghĩ, mắc lỗi và tìm cách giải quyết. youtube \n\nBạn cũng có quyền không dùng AI khi nhiệm vụ yêu cầu tự thực hiện, khi dữ liệu không nên chia sẻ hoặc khi bạn không đủ khả năng kiểm tra một đầu ra quan trọng. Vai trò chủ động thể hiện ở việc biết lựa chọn công cụ, đặt giới hạn và chịu trách nhiệm về quyết định, không phải ở số lượng câu lệnh đã gửi.\n\nNguồn đối chiếu: UNESCO — AI competency frameworks. unesco",
+        "check_questions": [
+            {
+                "ID22": {
+                    "question": "Theo UNESCO, mối quan hệ đúng đắn giữa công nghệ AI và năng lực trí tuệ của con người là gì?",
+                    "options": [
+                        "A. AI thay thế hoàn toàn tư duy và quyền quyết định của học sinh.",
+                        "B. AI hỗ trợ và tăng cường năng lực con người chứ không làm suy yếu sự phát triển trí tuệ.",
+                        "C. Học sinh không được phép dùng bất kỳ công cụ AI nào trong mọi trường hợp."
+                    ],
+                    "answer": 1
+                },
+                "ID23": {
+                    "question": "Thông điệp cốt lõi từ video của BBC Ideas về việc dùng AI trong học tập là gì?",
+                    "options": [
+                        "A. Dùng AI làm bạn đồng hành cùng làm việc chứ không để nó làm thay bài cho bạn.",
+                        "B. Hãy để AI viết toàn bộ bài luận để tiết kiệm thời gian nghỉ ngơi.",
+                        "C. Chỉ dùng AI để giải các bài tập trắc nghiệm."
+                    ],
+                    "answer": 0
+                },
+                "ID24": {
+                    "question": "Phương pháp tự kiểm tra nào giúp bạn chắc chắn rằng mình thực sự làm chủ kiến thức chứ không phụ thuộc AI?",
+                    "options": [
+                        "A. Đếm số câu lệnh mình đã gửi cho AI trong ngày.",
+                        "B. Đóng màn hình AI và tự giải thích lại bài làm hoặc xử lý một bài toán tương tự bằng lời của mình.",
+                        "C. Sao chép đoạn chat với AI vào phần kết luận bài nộp."
+                    ],
+                    "answer": 1
+                }
+            }
+        ]
+    },
+    "HV09": {
+        "title": "Kiểm tra sản phẩm do AI hỗ trợ",
+        "video_url": "https://www.youtube.com/watch?v=Y0KidGr9Z2Y",
+        "reading_content": "Một sản phẩm có AI hỗ trợ cần được duyệt như một chỉnh thể trước khi nộp hoặc công bố. Sản phẩm đó có thể là bài viết, bộ slide, báo cáo, áp phích hoặc chương trình. Việc một phép tính đã đúng không có nghĩa toàn bộ sản phẩm đã sẵn sàng. HV09 xem xét sản phẩm có đáp ứng mục đích, người sử dụng và các yêu cầu được giao hay không. \n\nTrong khóa AI Fluency, năng lực đánh giá sản phẩm bao gồm các câu hỏi: nội dung có chính xác không, phù hợp với đối tượng và mục đích không, có mạch lạc không, đáp ứng yêu cầu không và có giải quyết vấn đề ban đầu không. Video cũng phân biệt việc đánh giá sản phẩm với đánh giá quá trình làm việc và cách AI tương tác. youtube \n\nBước đầu, bạn hãy đọc lại đề bài rồi xem sản phẩm cuối, không chỉ đọc lại cuộc trò chuyện với AI. Một bộ slide có thể đẹp nhưng thiếu câu trả lời chính. Một báo cáo có thể đủ số trang nhưng sử dụng thuật ngữ mà người xem không hiểu. Bạn cần so sánh sản phẩm với tiêu chí đã được giao, thay vì coi số lượng nội dung là dấu hiệu đạt chất lượng. \n\nBước tiếp theo là kiểm tra sự thống nhất giữa các phần. Con số trên biểu đồ có khớp với đoạn nhận xét không? Kết luận có phản ánh đúng nội dung đã trình bày không? Hình minh họa có khiến người xem hiểu nhầm đó là ảnh chụp thật không? Abertay lưu ý đầu ra hình ảnh, âm thanh và video cũng cần được kiểm tra về độ chính xác, cách trình bày có thể gây hiểu nhầm, điều kiện sử dụng và nhu cầu làm rõ nguồn gốc AI. intranet.abertay.ac \n\nBạn cần rà soát nguồn và ghi nhận sử dụng AI trên bản cuối. Những nguồn được liệt kê có thực sự được đọc không? Phần ghi chú có phản ánh đúng cách công cụ đã hỗ trợ không? MLA yêu cầu người viết đi tới nguồn gốc và mô tả những đóng góp đáng kể của AI, thay vì chỉ thêm một trích dẫn chung. style.mla \n\nCuối cùng, hãy thử sản phẩm theo cách người nhận sẽ dùng: mở tệp, đọc từng trang, thử đường dẫn hoặc chạy chương trình trong điều kiện được phép. Nếu còn lỗi quan trọng, bạn cần sửa và kiểm tra lại; nếu không thể xác minh một nội dung cần độ chính xác cao, hãy loại bỏ hoặc xin hướng dẫn. Minh chứng của HV09 là quyết định “đã sẵn sàng”, “cần sửa” hoặc “chưa nên sử dụng” kèm lí do cụ thể, không phải một ô đánh dấu “đã kiểm tra” cho có.\n\nNguồn đối chiếu: Abertay — Evaluating AI outputs và MLA — Beyond Citation. intranet.abertay.ac",
+        "check_questions": [
+            {
+                "ID25": {
+                    "question": "Khi thực hiện tổng duyệt sản phẩm ở HV09 trước khi nộp, đối tượng chính bạn cần rà soát lại là gì?",
+                    "options": [
+                        "A. Sản phẩm cuối cùng đối chiếu với mục tiêu và tiêu chí bài tập ban đầu.",
+                        "B. Toàn bộ đoạn chat trò chuyện với AI.",
+                        "C. Tốc độ tải tệp của máy tính."
+                    ],
+                    "answer": 0
+                },
+                "ID26": {
+                    "question": "Khóa học AI Fluency đặt ra các tiêu chí nào để đánh giá một sản phẩm hoàn chỉnh?",
+                    "options": [
+                        "A. Sản phẩm có nhiều hình ảnh sặc sỡ và nhiều thuật ngữ phức tạp.",
+                        "B. Tính chính xác, sự phù hợp đối tượng/mục đích, độ mạch lạc và khả năng giải quyết vấn đề.",
+                        "C. Sản phẩm được hoàn thành trong thời gian dưới 5 phút."
+                    ],
+                    "answer": 1
+                },
+                "ID27": {
+                    "question": "Kết quả đầu ra của hành vi tổng duyệt ở HV09 phải thể hiện điều gì?",
+                    "options": [
+                        "A. Một dấu tích đánh dấu 'đã xem qua' cho xong thủ tục.",
+                        "B. Quyết định rõ ràng: 'đã sẵn sàng', 'cần sửa' hoặc 'chưa nên sử dụng' kèm lý do cụ thể.",
+                        "C. Nộp bài ngay mà không cần xem lại nếu slide thiết kế đẹp mắt."
+                    ],
+                    "answer": 1
+                }
+            }
+        ]
+    }
+}
