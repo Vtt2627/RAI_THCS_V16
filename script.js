@@ -21,7 +21,7 @@ const attentionResult = document.getElementById("attentionResult");
 const recommendationResult = document.getElementById("recommendationResult");
 const studentCodeDisplay = document.getElementById("studentCodeDisplay");
 
-// Hàm lấy mã học sinh từ Google Apps Script có xử lý dự phòng
+// 1. Hàm lấy mã học sinh từ Google Apps Script có cơ chế dự phòng an toàn
 function requestStudentCode(retries = 3, delay = 2000) {
     if (!studentCodeDisplay) return;
     studentCodeDisplay.textContent = "Đang cấp mã học sinh...";
@@ -41,7 +41,7 @@ function requestStudentCode(retries = 3, delay = 2000) {
                 if (n > 1) {
                     setTimeout(() => attempt(n - 1), delay + Math.random() * 1000);
                 } else {
-                    // Tạo mã dự phòng dựa trên thời gian nếu GAS không phản hồi
+                    // Dự phòng tự sinh mã nếu GAS gặp sự cố mạng hoặc CORS
                     assignedCode = "HS_" + Math.floor(100000 + Math.random() * 900000);
                     studentCodeDisplay.textContent = assignedCode + " (Tự động)";
                     if (startButton) startButton.disabled = false;
@@ -207,21 +207,23 @@ function showResult(score, needAttention, resultRecommendations) {
     if (window.RaiBackground) window.RaiBackground.setWarning(score < selectedQuestions.length / 2);
 }
 
-// Hàm hoàn thành bài trắc nghiệm và gửi mảng câu sai chính xác lên FastAPI
+// 2. Hàm hoàn thành bài trắc nghiệm và gọi API FastAPI phân tích 1-1
 function finishQuiz() {
     if (hasSubmitted) return;
     hasSubmitted = true;
+    
     const score = calculateScore();
     const behaviorResults = analyzeBehaviors();
-    const needAttention = getNeedAttention(behaviorResults); // Mảng các mã hành vi sai (ví dụ: ["HV03", "HV04"])
+    const needAttention = getNeedAttention(behaviorResults); // Mảng chứa mã hành vi sai thực tế (vd: ["HV03", "HV04", ...])
     const resultRecommendations = getRecommendations(needAttention);
     const average = Number(((score / selectedQuestions.length) * 10).toFixed(2));
 
+    // Lưu trữ kết quả nội bộ và gửi lên Google Sheet
     saveResult(assignedCode, score, average, behaviorResults, needAttention, resultRecommendations);
     sendResultToSheet(assignedCode, score, average, needAttention, resultRecommendations);
     showResult(score, needAttention, resultRecommendations);
 
-    // Gửi danh sách câu sai lên FastAPI Backend và lưu kết quả chuyển sang learning.html
+    // Gửi danh sách câu sai thực tế lên FastAPI Backend để trích xuất nội dung lộ trình
     fetch('/api/get-learning-content', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -232,12 +234,13 @@ function finishQuiz() {
     })
     .then(res => res.json())
     .then(data => {
+        // Lưu kết quả phân tích vào localStorage để trang learning.html sử dụng
         localStorage.setItem("learningData", JSON.stringify(data));
     })
-    .catch(err => console.error("Lỗi gọi API Backend:", err));
+    .catch(err => console.error("Lỗi gọi API Backend phân tích lộ trình:", err));
 }
 
-// Chuyển hướng sang trang lộ trình học tập cá nhân hóa
+// 3. Xử lý sự kiện chuyển hướng sang trang lộ trình học tập cá nhân hóa
 const goToAgentBtn = document.getElementById("goToAgentBtn");
 if (goToAgentBtn) {
     goToAgentBtn.addEventListener("click", function () {
@@ -245,5 +248,5 @@ if (goToAgentBtn) {
     });
 }
 
-// Khởi chạy lấy mã học sinh khi vừa tải trang
+// Khởi chạy lấy mã học sinh ngay khi vừa tải trang
 requestStudentCode();
