@@ -1,10 +1,21 @@
 const STORAGE_KEY = "aiResponsibleResult";
 const AGENT_API_URL = "/api/get-learning-content";
 
-// Lưu trữ các câu hỏi đã bốc cho từng bài học để tránh bốc trùng nếu trả lời sai
 let currentActiveQuizzes = {};
+let ytPlayers = {};
+
+// Tải YouTube IFrame API động
+function loadYouTubeAPI() {
+    if (!window.YT) {
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+}
 
 async function initLearningPage() {
+    loadYouTubeAPI();
     const results = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
     const latest = results.length > 0 ? results[results.length - 1] : { studentCode: "HS_DEFAULT", behaviorResults: {} };
     const needAttention = Object.keys(latest.behaviorResults || {}).filter(k => latest.behaviorResults[k] === 0);
@@ -41,11 +52,18 @@ function renderLessonsWithGate(contentData) {
         
         let htmlContent = `<h3>Bài học ${index + 1}: ${lesson.title}</h3>`;
 
-        // Video nhúng YouTube
+        // Video nhúng với container cho YouTube API
+        let hasVideo = false;
         if (lesson.video_url) {
+            hasVideo = true;
+            // Trích xuất Video ID từ URL embed hoặc watch
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = lesson.video_url.match(regExp);
+            const videoId = (match && match[2].length === 11) ? match[2] : "UlXXRd3HGT0";
+
             htmlContent += `
                 <div class="video-wrapper">
-                    <iframe src="${lesson.video_url}" allowfullscreen></iframe>
+                    <div id="yt-player-${index}" data-videoid="${videoId}"></div>
                 </div>
             `;
         }
@@ -55,10 +73,13 @@ function renderLessonsWithGate(contentData) {
             htmlContent += `<div class="reading-box">${lesson.reading_content}</div>`;
         }
 
-        // Nút bấm "Tôi đã đọc và hiểu nội dung này"
+        // Nút bấm "Tôi đã đọc và hiểu nội dung này" (Khóa nếu có video)
+        const btnDisabledAttr = hasVideo ? "disabled style='opacity: 0.5; cursor: not-allowed;'" : "";
+        const btnText = hasVideo ? "🔒 Vui lòng xem hết video để mở khóa nút này" : "✓ Tôi đã đọc và hiểu nội dung này";
+
         htmlContent += `
             <div style="text-align: center; margin: 20px 0;">
-                <button class="understood-btn" id="understoodBtn_${index}" data-index="${index}">✓ Tôi đã đọc và hiểu nội dung này</button>
+                <button class="understood-btn" id="understoodBtn_${index}" data-index="${index}" ${btnDisabledAttr}>${btnText}</button>
             </div>
         `;
 
@@ -77,22 +98,30 @@ function renderLessonsWithGate(contentData) {
         };
     });
 
+    // Khởi tạo YouTube Players sau khi render HTML
+    setTimeout(() => {
+        lessons.forEach((lesson, index) => {
+            if (lesson.video_url) {
+                initYouTubePlayer(index);
+            }
+        });
+    }, 500);
+
     // SỰ KIỆN: Bấm nút "Tôi đã hiểu nội dung" -> Bốc ngẫu nhiên câu hỏi
     document.querySelectorAll(".understood-btn").forEach(btn => {
         btn.addEventListener("click", function() {
+            if (this.disabled) return;
             const idx = this.getAttribute("data-index");
             const quizInfo = currentActiveQuizzes[idx];
 
             if (!quizInfo || quizInfo.allQuestions.length === 0) return;
 
-            // Bốc 1 câu hỏi ngẫu nhiên khác với câu vừa trả lời sai (nếu có)
             let availableQuestions = quizInfo.allQuestions.filter(q => q.id !== quizInfo.lastQuestionId);
             if (availableQuestions.length === 0) availableQuestions = quizInfo.allQuestions;
 
             const selectedQuiz = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
             quizInfo.lastQuestionId = selectedQuiz.id;
 
-            // Render câu hỏi vào khung
             const quizContainer = document.getElementById(`quizContainer_${idx}`);
             quizContainer.innerHTML = `
                 <p><strong>📝 Câu hỏi kiểm tra [Mã: ${selectedQuiz.id || 'Q'}]:</strong> ${selectedQuiz.question}</p>
@@ -110,14 +139,47 @@ function renderLessonsWithGate(contentData) {
             quizContainer.style.display = "block";
             this.disabled = true;
             this.style.opacity = "0.5";
+            this.style.cursor = "not-allowed";
             this.textContent = "Đang làm câu hỏi kiểm tra bên dưới...";
             
             quizContainer.scrollIntoView({ behavior: 'smooth' });
-
-            // Gán lại sự kiện Nộp bài cho nút vừa tạo
             attachSubmitEvent(idx);
         });
     });
+}
+
+// Khởi tạo YouTube Player với sự kiện chống tua / xem hết
+function initYouTubePlayer(index) {
+    const playerElement = document.getElementById(`yt-player-${index}`);
+    if (!playerElement) return;
+    const videoId = playerElement.getAttribute("data-videoid");
+
+    if (window.YT && window.YT.Player) {
+        ytPlayers[index] = new YT.Player(`yt-player-${index}`, {
+            height: '315',
+            width: '100%',
+            videoId: videoId,
+            playerVars: { 'playsinline': 1 },
+            events: {
+                'onStateChange': (event) => onPlayerStateChange(event, index)
+            }
+        });
+    } else {
+        setTimeout(() => initYouTubePlayer(index), 500);
+    }
+}
+
+// Khi video chạy đến hết (ENDED), mở khóa nút "Tôi đã đọc và hiểu"
+function onPlayerStateChange(event, index) {
+    if (event.data === YT.PlayerState.ENDED) {
+        const btn = document.getElementById(`understoodBtn_${index}`);
+        if (btn) {
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            btn.style.cursor = "pointer";
+            btn.textContent = "✓ Tôi đã đọc và hiểu nội dung này";
+        }
+    }
 }
 
 // SỰ KIỆN: Nộp câu trả lời kiểm tra
@@ -140,25 +202,30 @@ function attachSubmitEvent(idx) {
         const chosenAnswer = Number(selected.value);
 
         if (chosenAnswer === correctAnswer) {
-            // TRẢ LỜI ĐÚNG: Đạt yêu cầu bài học
             feedback.style.color = "#4ade80";
             feedback.textContent = "Chính xác! Bạn đã hoàn thành xuất sắc bài học này.";
             submitBtn.disabled = true;
             submitBtn.style.opacity = "0.5";
             understoodBtn.textContent = "✓ Đã hoàn thành bài học này";
         } else {
-            // TRẢ LỜI SAI: Yêu cầu học lại
             feedback.style.color = "#ef4444";
-            feedback.textContent = "✕ Chưa chính xác! Bạn cần đọc/xem lại nội dung phía trên. Hãy bấm lại nút 'Tôi đã đọc và hiểu' để thử lại câu hỏi khác.";
+            feedback.textContent = "✕ Chưa chính xác! Bạn cần xem lại video và đọc lại nội dung phía trên. Nút xác nhận đã bị khóa lại để bạn học kỹ hơn.";
             
-            // Tự động ẩn câu hỏi sau 2.5 giây để học sinh đọc lại bài
+            // Khóa lại nút và ẩn khung câu hỏi sau 3 giây để học sinh xem lại video
             setTimeout(() => {
                 quizContainer.style.display = "none";
-                understoodBtn.disabled = false;
-                understoodBtn.style.opacity = "1";
-                understoodBtn.textContent = "Tôi đã đọc lại và hiểu nội dung (Thử lại)";
+                understoodBtn.disabled = true;
+                understoodBtn.style.opacity = "0.5";
+                understoodBtn.style.cursor = "not-allowed";
+                understoodBtn.textContent = "🔒 Xem lại hết video để mở khóa lại nút này";
                 understoodBtn.scrollIntoView({ behavior: 'smooth' });
-            }, 2500);
+                
+                // Tua lại video về đầu (0 giây) nếu cần học sinh xem lại
+                if (ytPlayers[idx] && typeof ytPlayers[idx].seekTo === 'function') {
+                    ytPlayers[idx].seekTo(0);
+                    ytPlayers[idx].pauseVideo();
+                }
+            }, 3000);
         }
     });
 }
