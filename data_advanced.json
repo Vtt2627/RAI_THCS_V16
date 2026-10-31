@@ -1,0 +1,335 @@
+{
+    "ADV01": {
+        "title": "Phân tích một câu trả lời AI: đúng dữ kiện chưa chắc đúng kết luận",
+        "video_url": "https://www.youtube.com/embed/X-AWdfSFCHQ",
+        "reading_content": "Ở mức cơ bản, bạn đã biết một câu trả lời trôi chảy vẫn có thể sai. Ở mức nâng cao, bạn cần phát hiện trường hợp tinh vi hơn: từng dữ kiện có vẻ đúng nhưng cách kết nối chúng lại dẫn tới một kết luận chưa đủ căn cứ[cite: 2]. Việc đánh giá vì thế không dừng ở câu hỏi “con số này đúng không”, mà mở rộng sang “con số này có thực sự chứng minh điều đang được khẳng định không”[cite: 2].",
+        "check_questions": [
+            {
+                "id": "ADV_ID01",
+                "question": "Khi AI đưa ra kết luận 'Ứng dụng A giúp học sinh học tốt hơn vì lớp sử dụng ứng dụng này đạt điểm cao', lỗ hổng lập luận cần phát hiện ở đây là gì?",
+                "options": [
+                    "A. Đã nhầm lẫn giữa hai hiện tượng xuất hiện cùng nhau với mối quan hệ nguyên nhân - kết quả[cite: 2].",
+                    "B. AI sử dụng ngôn ngữ quá phức tạp khó hiểu.",
+                    "C. AI chưa trích dẫn mã nguồn lập trình của ứng dụng."
+                ],
+                "answer": 0
+            },
+            {
+                "id": "ADV_ID02",
+                "question": "Theo tài liệu học tập, khi phân tích một câu trả lời nâng cao của AI, bạn cần tiến hành đánh giá dựa trên 3 lớp nào?",
+                "options": [
+                    "A. Độ dài văn bản, Tốc độ phản hồi, và Số lượng từ vựng chuyên ngành.",
+                    "B. Phát biểu được nêu ra, Bằng chứng được viện dẫn, và Bước suy luận nối bằng chứng với kết luận[cite: 2].",
+                    "C. Tên mô hình AI, Thời gian truy cập, và Giao diện hiển thị."
+                ],
+                "answer": 1
+            },
+            {
+                "id": "ADV_ID03",
+                "question": "Nếu bằng chứng do AI đưa ra chỉ đúng trong một điều kiện hẹp, hành động điều chỉnh nào sau đây là chuẩn xác nhất?",
+                "options": [
+                    "A. Bác bỏ toàn bộ thông tin do AI cung cấp.",
+                    "B. Giữ nguyên kết luận chung cho tất cả mọi người.",
+                    "C. Viết lại kết luận ở mức thận trọng hơn, thu hẹp phạm vi áp dụng đúng với bằng chứng[cite: 2]."
+                ],
+                "answer": 2
+            }
+        ]
+    },
+    "ADV02": {
+        "title": "Thiết kế phép thử thay vì chỉ hỏi AI 'Bạn có chắc không?'",
+        "video_url": "https://www.youtube.com/embed/UlXXRd3HGT0",
+        "reading_content": "Một kết quả vượt qua một lần thử chưa đủ để chứng minh nó đúng trong mọi trường hợp[cite: 2]. Ở mức nâng cao, bạn cần tự thiết kế những phép thử có khả năng làm lộ lỗi, thay vì chỉ chọn một ví dụ thuận lợi hoặc yêu cầu AI xác nhận lại câu trả lời của chính nó[cite: 2].",
+        "check_questions": [
+            {
+                "id": "ADV_ID04",
+                "question": "Tại sao việc chỉ hỏi lại AI 'Bạn có chắc chắn về câu trả lời này không?' lại KHÔNG phải là phương pháp kiểm tra hiệu quả?",
+                "options": [
+                    "A. Vì AI không có khả năng đọc lại tin nhắn cũ.",
+                    "B. Vì AI có xu hướng xác nhận lại câu trả lời của chính nó thay vì tự phát hiện ra lỗi logic[cite: 2].",
+                    "C. Vì câu hỏi đó làm tốn dung lượng bộ nhớ của hệ thống."
+                ],
+                "answer": 1
+            },
+            {
+                "id": "ADV_ID05",
+                "question": "Khi kiểm tra một thuật toán hoặc công thức do AI tạo ra, trường hợp thử 'ở ranh giới' (boundary values) nghĩa là gì?",
+                "options": [
+                    "A. Thử nghiệm trên các máy tính có màn hình kích thước khác nhau.",
+                    "B. Thử nghiệm nhập dữ liệu bằng nhiều ngôn ngữ khác nhau.",
+                    "C. Thử nghiệm với các dữ liệu nằm tại ngưỡng thay đổi điều kiện (ví dụ: số lượng bằng 0, giá trị đúng bằng ngưỡng giảm giá)[cite: 2]."
+                ],
+                "answer": 2
+            },
+            {
+                "id": "ADV_ID06",
+                "question": "Tại sao bạn bắt buộc phải xác định 'kết quả mong đợi' TRƯỚC KHI tiến hành chạy phép thử trên AI?",
+                "options": [
+                    "A. Để tránh việc tự điều chỉnh tiêu chuẩn đánh giá theo kết quả đầu ra do AI tạo ra[cite: 2].",
+                    "B. Để AI có thể đọc được suy nghĩ của bạn.",
+                    "C. Để giảm thời gian xử lý của máy tính."
+                ],
+                "answer": 0
+            }
+        ]
+    },
+    "ADV03": {
+        "title": "Lập hồ sơ bằng chứng và xử lí nguồn mâu thuẫn",
+        "video_url": "https://www.youtube.com/embed/vFYoa8Uo6po",
+        "reading_content": "Một bài làm có nhiều đường dẫn chưa chắc có bằng chứng tốt[cite: 2]. Ở mức nâng cao, bạn cần cho thấy từng nguồn hỗ trợ phát biểu nào, hỗ trợ đến đâu và có giới hạn gì[cite: 2]. Mục tiêu không phải trang trí bài bằng tài liệu tham khảo, mà xây dựng một hồ sơ để người khác có thể lần theo và kiểm tra kết luận[cite: 2].",
+        "check_questions": [
+            {
+                "id": "ADV_ID07",
+                "question": "Khi lập hồ sơ bằng chứng đối chiếu thông tin AI, thao tác nào dưới đây giúp tránh việc gán chủ quan ý kiến cá nhân cho tài liệu gốc?",
+                "options": [
+                    "A. Tách biệt rõ ràng giữa 'Nguồn nói gì' và 'Tôi suy ra điều gì'[cite: 2].",
+                    "B. Gộp chung tất cả các ý kiến thành một đoạn văn duy nhất.",
+                    "C. Chỉ trích dẫn tên tác giả mà không ghi nội dung."
+                ],
+                "answer": 0
+            },
+            {
+                "id": "ADV_ID08",
+                "question": "Khi phát hiện hai nguồn tài liệu đưa ra kết quả trái ngược nhau về cùng một vấn đề, bước xử lý nâng cao đầu tiên là gì?",
+                "options": [
+                    "A. Lựa chọn ngay nguồn nào có quan điểm giống với chatbot AI.",
+                    "B. Xóa bỏ cả hai nguồn và tự nghĩ ra đáp án mới.",
+                    "C. Kiểm tra xem hai nguồn đó có cùng định nghĩa, đối tượng, thời điểm và phương pháp đo lường hay không[cite: 2]."
+                ],
+                "answer": 2
+            },
+            {
+                "id": "ADV_ID09",
+                "question": "Nếu thấy 5 trang web khác nhau cùng đưa ra một số liệu giống hệt nhau, làm sao để xác định độ độc lập của bằng chứng?",
+                "options": [
+                    "A. Truy tìm xem cả 5 trang web đó có phải đang cùng trích dẫn lại từ một báo cáo gốc duy nhất hay không[cite: 2].",
+                    "B. Mặc định là có 5 bằng chứng độc lập vì có 5 địa chỉ web.",
+                    "C. Chọn trang web có giao diện đẹp nhất làm nguồn duy nhất."
+                ],
+                "answer": 0
+            }
+        ]
+    },
+    "ADV04": {
+        "title": "Thiết kế quy trình sử dụng AI theo nguyên tắc tối thiểu dữ liệu",
+        "video_url": "https://www.youtube.com/embed/zNxw5gJtHLc",
+        "reading_content": "Ở mức cơ bản, bạn đã biết không tùy tiện đưa thông tin cá nhân vào AI[cite: 2]. Ở mức nâng cao, bạn cần xem xét toàn bộ đường đi của dữ liệu: lấy từ đâu, nhập vào công cụ nào, ai được tiếp cận, dùng để làm gì và có thực sự cần thiết không[cite: 2].",
+        "check_questions": [
+            {
+                "id": "ADV_ID10",
+                "question": "Nguyên tắc 'Tối thiểu dữ liệu' (Data Minimization) theo hướng dẫn của UNICEF khi sử dụng AI được hiểu là gì?",
+                "options": [
+                    "A. Giới hạn dung lượng tệp tin tải lên AI dưới 1 Megabyte.",
+                    "B. Chỉ cho phép học sinh sử dụng AI trong thời gian tối đa 15 phút.",
+                    "C. Chỉ thu thập và xử lý đúng những dữ liệu cần thiết tối thiểu để phục vụ mục tiêu cụ thể của bài học[cite: 2]."
+                ],
+                "answer": 2
+            },
+            {
+                "id": "ADV_ID11",
+                "question": "Tại sao hành động chỉ thay tên thật bằng ký tự (như HS_A, HS_B) vẫn chưa đảm bảo tuyệt đối an toàn dữ liệu?",
+                "options": [
+                    "A. Vì các thông tin kết hợp còn lại (lịch trình chi tiết, hoàn cảnh) vẫn có thể giúp suy ra danh tính người nói[cite: 2].",
+                    "B. Vì AI có thể tự động tra cứu lại danh tính thật trên mạng xã hội.",
+                    "C. Vì ký tự viết tắt làm AI không hiểu được ngữ cảnh."
+                ],
+                "answer": 0
+            },
+            {
+                "id": "ADV_ID12",
+                "question": "Khi muốn nhờ AI xử lý một tập dữ liệu khảo sát của lớp, giải pháp thiết kế quy trình an toàn nhất là gì?",
+                "options": [
+                    "A. Tải nguyên file Excel chứa đầy đủ họ tên và số điện thoại lên AI.",
+                    "B. Loại bỏ tất cả các cột định danh không cần thiết (họ tên, số điện thoại) trước khi đưa dữ liệu vào AI[cite: 2].",
+                    "C. Đăng công khai tệp dữ liệu lên các diễn đàn để nhờ hỗ trợ."
+                ],
+                "answer": 1
+            }
+        ]
+    },
+    "ADV05": {
+        "title": "Đọc dấu vết nguồn gốc nội dung mà không nhầm với chứng nhận sự thật",
+        "video_url": "https://www.youtube.com/embed/X994dDnmRmY",
+        "reading_content": "Khi kiểm tra ảnh, video hoặc âm thanh, bạn cần phân biệt hai câu hỏi: “Tệp này được tạo và chỉnh sửa như thế nào?” và “Điều nó mô tả có đúng sự thật không?”[cite: 2]. Hai câu hỏi có liên quan nhưng không đồng nhất[cite: 2].",
+        "check_questions": [
+            {
+                "id": "ADV_ID13",
+                "question": "Theo tiêu chuẩn C2PA (Content Credentials), thông tin lịch sử nguồn gốc đính kèm tệp số cung cấp cho bạn điều gì?",
+                "options": [
+                    "A. Minh chứng về công cụ tạo, lịch sử chỉnh sửa và việc có sử dụng AI hay không[cite: 2].",
+                    "B. Con dấu đảm bảo 100% sự kiện trong bức ảnh là có thật ngoài đời.",
+                    "C. Quyền sở hữu trí tuệ vĩnh viễn đối với bức ảnh."
+                ],
+                "answer": 0
+            },
+            {
+                "id": "ADV_ID14",
+                "question": "Tại sao một bức ảnh có dấu vết nguồn gốc (Content Credentials) rõ ràng vẫn KHÔNG đồng nghĩa với việc sự kiện trong ảnh là sự thật?",
+                "options": [
+                    "A. Vì công nghệ C2PA thường xuyên bị lỗi hiển thị.",
+                    "B. Vì AI chưa thể đọc được các định dạng ảnh số.",
+                    "C. Vì bức ảnh đó hoàn toàn có thể ghi lại một kịch bản dàn dựng giả định[cite: 2]."
+                ],
+                "answer": 2
+            },
+            {
+                "id": "ADV_ID15",
+                "question": "Khi một tệp hình ảnh KHÔNG có nhãn thông tin nguồn gốc C2PA, cách nhận định nào sau đây là chuẩn xác nhất?",
+                "options": [
+                    "A. Ghi nhận là thiếu dữ vết nguồn gốc để đánh giá, cần kết hợp đối chiếu thêm các hệ thống bằng chứng khác[cite: 2].",
+                    "B. Khẳng định ngay lập tức đây là bức ảnh giả mạo do AI tạo ra.",
+                    "C. Coi đó là bức ảnh thật vì không có dấu vết AI."
+                ],
+                "answer": 0
+            }
+        ]
+    },
+    "ADV06": {
+        "title": "Nhận diện định kiến và kiểm tra sự công bằng trong đề xuất của AI",
+        "video_url": "https://www.youtube.com/embed/XW1KFx92QC4",
+        "reading_content": "Một đề xuất không chỉ cần hợp lí với người nhận nó; bạn còn phải xem nó tác động thế nào đến những người khác[cite: 2]. Ở mức nâng cao, việc đánh giá AI bao gồm câu hỏi ai được lợi, ai bị bỏ sót và những giả định nào đang được coi là bình thường[cite: 2].",
+        "check_questions": [
+            {
+                "id": "ADV_ID16",
+                "question": "Khi AI đề xuất một kế hoạch học tập nhóm đòi hỏi tất cả học sinh phải có điện thoại thông minh cấu hình cao, thiên vị/định kiến ngầm ở đây là gì?",
+                "options": [
+                    "A. AI muốn quảng cáo cho các hãng điện thoại.",
+                    "B. AI giả định mọi học sinh đều có điều kiện kinh tế và thiết bị tiếp cận giống nhau[cite: 2].",
+                    "C. AI bị lỗi bộ nhớ khi tạo đề xuất."
+                ],
+                "answer": 1
+            },
+            {
+                "id": "ADV_ID17",
+                "question": "Để kiểm tra xem AI có bị định kiến giới tính khi tư vấn nghề nghiệp hay không, bạn nên thực hiện phép thử nào?",
+                "options": [
+                    "A. Yêu cầu AI đưa ra danh sách các công ty lớn.",
+                    "B. Hỏi AI xem nó có thích nam hay nữ hơn.",
+                    "C. Giữ nguyên hồ sơ năng lực/sở thích và chỉ thay đổi thông tin giới tính để so sánh kết quả gợi ý[cite: 2]."
+                ],
+                "answer": 2
+            },
+            {
+                "id": "ADV_ID18",
+                "question": "Mục tiêu cốt lõi của việc nhận diện định kiến trong đề xuất của AI ở mức độ nâng cao là gì?",
+                "options": [
+                    "A. Phát hiện các nhóm đối tượng bị bỏ sót để thiết kế phương án thay thế bao trùm và công bằng hơn[cite: 2].",
+                    "B. Chỉ trích và cấm sử dụng hoàn toàn các công cụ AI.",
+                    "C. Tăng tốc độ phản hồi của chatbot."
+                ],
+                "answer": 0
+            }
+        ]
+    },
+    "ADV07": {
+        "title": "Phân công cho AI nhưng không giao mất quyền quyết định",
+        "video_url": "https://www.youtube.com/embed/3esuXOeAhMc",
+        "reading_content": "Không phải nhiệm vụ nào AI làm được cũng nên giao cho AI[cite: 2]. Bạn cần phân biệt khả năng tạo ra một đầu ra với sự phù hợp của việc để công cụ thực hiện phần việc đó[cite: 2]. Câu hỏi nâng cao là: phần nào có thể giao, phần nào cần phối hợp và phần nào con người phải giữ quyền quyết định?[cite: 2]",
+        "check_questions": [
+            {
+                "id": "ADV_ID19",
+                "question": "Khi thực hiện một bài luận phân tích quan điểm cá nhân, cách phân công công việc với AI nào dưới đây là đúng đắn nhất?",
+                "options": [
+                    "A. Tự suy nghĩ lập luận, dùng AI để gợi ý cấu trúc hoặc kiểm tra lỗi diễn đạt, và con người ra quyết định duyệt cuối cùng[cite: 2].",
+                    "B. Giao AI chọn hộ lập luận và viết toàn bộ bài từ đầu đến cuối.",
+                    "C. Không tự làm bất kỳ phần nào và sao chép 100% văn bản của AI."
+                ],
+                "answer": 0
+            },
+            {
+                "id": "ADV_ID20",
+                "question": "Khái niệm 'Điểm dừng' (Human-in-the-loop checkpoint) trong quy trình phân công công việc cho AI nghĩa là gì?",
+                "options": [
+                    "A. Nút bấm tắt nguồn máy tính khi AI bị treo.",
+                    "B. Thời gian nghỉ giữa các giờ học.",
+                    "C. Ranh giới quy định AI chỉ được làm tới một bước nhất định và phải có sự phê duyệt của con người trước khi thực hiện bước tiếp theo[cite: 2]."
+                ],
+                "answer": 2
+            },
+            {
+                "id": "ADV_ID21",
+                "question": "Theo UNESCO, tiêu chí quan trọng nhất để quyết định xem có nên giao một nhiệm vụ cho AI hay không là gì?",
+                "options": [
+                    "A. Việc giao nhiệm vụ có làm suy yếu mục tiêu phát triển trí tuệ và quyền tự quyết của con người hay không[cite: 2].",
+                    "B. Nhiệm vụ đó AI làm nhanh hơn con người bao nhiêu giây.",
+                    "C. Dung lượng bộ nhớ mà AI cần để xử lý nhiệm vụ đó."
+                ],
+                "answer": 0
+            }
+        ]
+    },
+    "ADV08": {
+        "title": "Minh bạch đóng góp: chứng minh bạn đã làm gì, không chỉ khai 'có dùng AI'",
+        "video_url": "https://www.youtube.com/embed/QEPdo_DvakY",
+        "reading_content": "Ở mức cơ bản, bạn đã biết ghi nhận việc dùng AI[cite: 2]. Ở mức nâng cao, bạn cần chứng minh ranh giới đóng góp: công cụ đã đề xuất gì, bạn đã thay đổi gì và những quyết định quan trọng thuộc về ai[cite: 2].",
+        "check_questions": [
+            {
+                "id": "ADV_ID22",
+                "question": "Cách ghi nhận việc sử dụng AI nào dưới đây thể hiện được 'Minh bạch đóng góp' ở mức độ nâng cao?",
+                "options": [
+                    "A. Viết một dòng chung chung ở cuối bài: 'Bài này có tham khảo AI'.",
+                    "B. Không cần ghi nhận vì đã tự chỉnh sửa vài từ ngữ.",
+                    "C. Ghi rõ: 'AI gợi ý 5 phương án cấu trúc, tôi chọn 1 phương án phù hợp, loại bỏ 2 ví dụ sai ngữ cảnh và tự kiểm tra số liệu'[cite: 2]."
+                ],
+                "answer": 2
+            },
+            {
+                "id": "ADV_ID23",
+                "question": "Để minh chứng cho quá trình làm việc chủ động với AI mà không làm tốn quá nhiều thời gian, bạn nên lưu lại thông tin gì?",
+                "options": [
+                    "A. Các 'điểm chuyển quan trọng' bao gồm: đề xuất ban đầu của AI, lý do bạn điều chỉnh/từ chối, và bản sản phẩm cuối[cite: 2].",
+                    "B. Toàn bộ hàng trăm dòng lịch sử trò chuyện chi tiết.",
+                    "C. Ảnh chụp màn hình giao diện đăng nhập của phần mềm AI."
+                ],
+                "answer": 0
+            },
+            {
+                "id": "ADV_ID24",
+                "question": "Yếu tố cốt lõi nào chứng minh bạn thực sự chủ động làm chủ sản phẩm chứ không phải phụ thuộc hoàn toàn vào AI?",
+                "options": [
+                    "A. Số lượng câu lệnh (prompt) bạn đã gửi cho chatbot.",
+                    "B. Khả năng tự giải thích độc lập lý do đưa ra các lựa chọn và suy luận trong bài làm bằng lời của mình[cite: 2].",
+                    "C. Độ dài của bản nhật ký ghi nhận sử dụng AI."
+                ],
+                "answer": 1
+            }
+        ]
+    },
+    "ADV09": {
+        "title": "Ra quyết định công bố và xử lí khi sản phẩm có sai sót",
+        "video_url": "https://www.youtube.com/embed/Y0KidGr9Z2Y",
+        "reading_content": "Kiểm tra sản phẩm không kết thúc bằng việc đánh dấu “đã đọc lại”[cite: 2]. Ở mức nâng cao, bạn cần quyết định sản phẩm có được sử dụng trong hoàn cảnh cụ thể hay chưa, đồng thời chuẩn bị cách phản ứng nếu sau đó phát hiện sai sót[cite: 2].",
+        "check_questions": [
+            {
+                "id": "ADV_ID25",
+                "question": "Mức độ rà soát và kiểm tra một sản phẩm có sự hỗ trợ của AI trước khi công bố phụ thuộc chủ yếu vào yếu tố nào?",
+                "options": [
+                    "A. Quy mô đối tượng người dùng và hậu quả có thể xảy ra nếu thông tin bị sai sót[cite: 2].",
+                    "B. Tốc độ mạng internet tại thời điểm đăng tải.",
+                    "C. Số lượng hình ảnh minh họa có trong tệp."
+                ],
+                "answer": 0
+            },
+            {
+                "id": "ADV_ID26",
+                "question": "Nếu phát hiện ra một lỗi sai nghiêm trọng về số liệu trong tệp tài liệu do AI hỗ trợ đã công khai cho cả lớp, quy trình xử lý chuẩn là gì?",
+                "options": [
+                    "A. Âm thầm xóa tệp và coi như không có chuyện gì xảy ra.",
+                    "B. Tạm dừng phát hành bản lỗi, báo cáo người phụ trách và đưa ra thông báo đính chính công khai kèm bản sửa mới[cite: 2].",
+                    "C. Đổ lỗi hoàn toàn cho công cụ AI trên nhóm chung."
+                ],
+                "answer": 1
+            },
+            {
+                "id": "ADV_ID27",
+                "question": "Thế nào là tinh thần 'Chịu trách nhiệm' đối với sản phẩm có sự hỗ trợ của AI ở cấp độ nâng cao?",
+                "options": [
+                    "A. Cam kết sản phẩm tuyệt đối không bao giờ mắc bất kỳ lỗi nhỏ nào.",
+                    "B. Từ chối giải thích quy trình làm việc với người đánh giá.",
+                    "C. Đã thực hiện kiểm tra phù hợp, nêu rõ giới hạn trung thực và sẵn sàng sửa chữa minh bạch khi phát hiện sai sót[cite: 2]."
+                ],
+                "answer": 2
+            }
+        ]
+    }
+}
