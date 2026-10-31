@@ -2,7 +2,6 @@ import json
 import os
 import google.generativeai as genai
 
-# Cấu hình Gemini API từ biến môi trường trên server Render
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
@@ -30,30 +29,38 @@ def load_json_file(filename):
 
 def get_learning_path(need_attention):
     """
-    Phân tích nghiêm ngặt 1-1: 
-    - Dựa hoàn toàn vào danh sách `need_attention` thực tế mà học sinh làm chưa đạt.
-    - Tuyệt đối không chọn đại, không gán bừa. Chỉ trích xuất đúng các bài học 
-      có mã khớp chính xác với từng lỗi sai thực tế của học sinh.
+    Phân tích nghiêm ngặt theo đúng luồng thực tế:
+    - Nếu need_attention là None (chưa làm bài đánh giá): Yêu cầu học sinh hoàn thành bài test trước.
+    - Nếu need_attention là danh sách rỗng [] (đã làm bài và đạt tuyệt đối): Trả về lộ trình nâng cao.
+    - Nếu need_attention có dữ liệu (có lỗi sai): Trích xuất chính xác 1-1 các bài học bù đắp tương ứng.
     """
     advanced_data = load_json_file("data_advanced.json")
     remedial_data = load_json_file("data_remedial.json")
     
-    # Nếu học sinh đạt tuyệt đối (không có lỗi nào) -> Trả về lộ trình nâng cao
-    if not need_attention or len(need_attention) == 0:
+    # Trường hợp 1: Chưa thực hiện bài đánh giá (None)
+    if need_attention is None:
         return {
+            "status": "pending_assessment",
+            "message": "Vui lòng hoàn thành bài đánh giá năng lực trước khi xem lộ trình học tập cá nhân hóa.",
+            "content": {}
+        }
+    
+    # Trường hợp 2: Đã làm bài và đạt tuyệt đối (danh sách rỗng [])
+    if len(need_attention) == 0:
+        return {
+            "status": "advanced",
             "message": "Bạn đã hoàn thành xuất sắc toàn bộ bài đánh giá! Dưới đây là lộ trình nâng cao:",
             "content": advanced_data
         }
     
-    # Lọc chuẩn xác: Học sinh sai mã nào, chỉ lấy đúng bài học của mã đó trong remedial_data
+    # Trường hợp 3: Có lỗi cần khắc phục -> Lọc chuẩn xác 1-1, cấm gán bừa
     filtered_content = {}
-    
     for code in need_attention:
         if code in remedial_data:
             filtered_content[code] = remedial_data[code]
 
-    # Trả về kết quả phân tích đúng các bài học tương ứng với các lỗi học sinh gặp phải
     return {
+        "status": "remedial",
         "message": f"Agent đã phân tích và trích xuất thành công {len(filtered_content)} bài học bù đắp tương ứng với các nội dung bạn làm chưa đạt:",
         "content": filtered_content
     }
