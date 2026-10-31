@@ -16,36 +16,61 @@ function loadYouTubeAPI() {
 
 async function initLearningPage() {
     loadYouTubeAPI();
+    
+    // Đọc an toàn kết quả từ localStorage với cơ chế dự phòng đa nguồn
+    let needAttention = [];
+    let studentCode = "HS_DEFAULT";
+
     const results = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    const latest = results.length > 0 ? results[results.length - 1] : { studentCode: "HS_DEFAULT", behaviorResults: {} };
-    const needAttention = Object.keys(latest.behaviorResults || {}).filter(k => latest.behaviorResults[k] === 0);
+    if (results.length > 0) {
+        const latest = results[results.length - 1];
+        studentCode = latest.studentCode || studentCode;
+        if (latest.behaviorResults) {
+            needAttention = Object.keys(latest.behaviorResults).filter(k => latest.behaviorResults[k] === 0);
+        }
+    }
+
+    // Dự phòng kiểm tra thêm kho lưu trữ trực tiếp nếu aiResponsibleResult trống
+    if (needAttention.length === 0) {
+        const directLearningData = JSON.parse(localStorage.getItem("learningData"));
+        if (directLearningData && directLearningData.needAttention) {
+            needAttention = directLearningData.needAttention;
+        }
+    }
 
     try {
         const response = await fetch(AGENT_API_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                studentCode: latest.studentCode,
-                needAttention: needAttention
+                studentCode: studentCode,
+                need_attention: needAttention // Đồng bộ khóa chuẩn với FastAPI backend
             })
         });
 
         const data = await response.json();
         
         // Hiển thị thông báo lộ trình ở đầu trang
-        document.getElementById("learningMessage").textContent = data.message;
+        const messageEl = document.getElementById("learningMessage");
+        if (messageEl) {
+            messageEl.textContent = data.message || "Lộ trình học tập cá nhân hóa:";
+        }
         
-        // LUÔN LUÔN render giao diện thẻ bài học trực quan (cho cả nâng cao và bù đắp)
+        // LUÔN LUÔN render giao diện thẻ bài học trực quan
         renderLessonsWithGate(data.content);
 
     } catch (error) {
         console.error("Lỗi kết nối Agent:", error);
-        document.getElementById("learningMessage").innerHTML = "<span style='color: #ef4444;'>Không thể kết nối tới Server Python Backend. Hãy đảm bảo file main.py đang chạy!</span>";
+        const messageEl = document.getElementById("learningMessage");
+        if (messageEl) {
+            messageEl.innerHTML = "<span style='color: #ef4444;'>Không thể kết nối tới Server Python Backend. Hãy đảm bảo file main.py đang chạy!</span>";
+        }
     }
 }
 
 function renderLessonsWithGate(contentData) {
     const container = document.getElementById("lessonContainer");
+    if (!container) return;
     container.innerHTML = "";
 
     const lessons = Array.isArray(contentData) ? contentData : Object.values(contentData);
@@ -54,14 +79,15 @@ function renderLessonsWithGate(contentData) {
         const card = document.createElement("div");
         card.className = "lesson-card";
         
-        let htmlContent = `<h3>Bài học ${index + 1}: ${lesson.title}</h3>`;
+        let htmlContent = `<h3>Bài học ${index + 1}: ${lesson.title || "Nội dung khắc phục"}</h3>`;
 
         // Xử lý video nhúng YouTube và chống tua
         let hasVideo = false;
-        if (lesson.video_url) {
+        const videoSrc = lesson.video_url || lesson.videoUrl;
+        if (videoSrc) {
             hasVideo = true;
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = lesson.video_url.match(regExp);
+            const match = videoSrc.match(regExp);
             const videoId = (match && match[2].length === 11) ? match[2] : "UlXXRd3HGT0";
 
             htmlContent += `
@@ -72,8 +98,9 @@ function renderLessonsWithGate(contentData) {
         }
 
         // Bài đọc lý thuyết
-        if (lesson.reading_content) {
-            htmlContent += `<div class="reading-box">${lesson.reading_content}</div>`;
+        const readingText = lesson.reading_content || lesson.description || lesson.content;
+        if (readingText) {
+            htmlContent += `<div class="reading-box" style="margin: 15px 0; line-height: 1.6;">${readingText}</div>`;
         }
 
         // Nút bấm xác nhận (Khóa nếu có video, mở sẵn nếu chỉ có lý thuyết)
@@ -87,15 +114,16 @@ function renderLessonsWithGate(contentData) {
         `;
 
         // Khung chứa câu hỏi kiểm tra (Bắt đầu ẩn)
-        if (lesson.check_questions && lesson.check_questions.length > 0) {
-            htmlContent += `<div id="quizContainer_${index}" class="check-quiz-box" style="display: none;"></div>`;
+        const questionsList = lesson.check_questions || lesson.questions;
+        if (questionsList && questionsList.length > 0) {
+            htmlContent += `<div id="quizContainer_${index}" class="check-quiz-box" style="display: none; background: #111b2b; padding: 15px; border-radius: 6px; margin-top: 15px;"></div>`;
         }
 
         card.innerHTML = htmlContent;
         container.appendChild(card);
 
         currentActiveQuizzes[index] = {
-            allQuestions: lesson.check_questions || [],
+            allQuestions: questionsList || [],
             lastQuestionId: null
         };
     });
@@ -103,7 +131,8 @@ function renderLessonsWithGate(contentData) {
     // Khởi tạo YouTube Players
     setTimeout(() => {
         lessons.forEach((lesson, index) => {
-            if (lesson.video_url) {
+            const videoSrc = lesson.video_url || lesson.videoUrl;
+            if (videoSrc) {
                 initYouTubePlayer(index);
             }
         });
@@ -134,7 +163,7 @@ function renderLessonsWithGate(contentData) {
                         </label>
                     `).join('')}
                 </div>
-                <button class="submit-check-btn" data-index="${idx}" data-correct="${selectedQuiz.answer}" style="margin-top: 10px;">Nộp câu trả lời</button>
+                <button class="submit-check-btn" data-index="${idx}" data-correct="${selectedQuiz.answer}" style="margin-top: 10px; padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 4px; cursor: pointer;">Nộp câu trả lời</button>
                 <p id="quizFeedback_${idx}" style="margin-top: 8px; font-weight: 600;"></p>
             `;
 
@@ -228,32 +257,37 @@ function attachSubmitEvent(idx) {
 }
 
 // Khung Chat hỗ trợ bên dưới trang học tập
-document.getElementById("sendQueryBtn").addEventListener("click", async function() {
-    const input = document.getElementById("userQuery");
-    const text = input.value.trim();
-    if (!text) return;
+const sendQueryBtn = document.getElementById("sendQueryBtn");
+if (sendQueryBtn) {
+    sendQueryBtn.addEventListener("click", async function() {
+        const input = document.getElementById("userQuery");
+        if (!input) return;
+        const text = input.value.trim();
+        if (!text) return;
 
-    addChatMessage("Bạn", text);
-    input.value = "";
+        addChatMessage("Bạn", text);
+        input.value = "";
 
-    try {
-        const results = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-        const studentCode = results.length > 0 ? results[results.length - 1].studentCode : "HS_001";
+        try {
+            const results = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            const studentCode = results.length > 0 ? results[results.length - 1].studentCode : "HS_001";
 
-        const res = await fetch('/api/chat', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ studentCode: studentCode, message: text })
-        });
-        const data = await res.json();
-        addChatMessage("Agent", data.reply);
-    } catch (err) {
-        addChatMessage("Hệ thống", "Không thể phản hồi lúc này.");
-    }
-});
+            const res = await fetch('/api/chat', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ studentCode: studentCode, message: text })
+            });
+            const data = await res.json();
+            addChatMessage("Agent", data.reply);
+        } catch (err) {
+            addChatMessage("Hệ thống", "Không thể phản hồi lúc này.");
+        }
+    });
+}
 
 function addChatMessage(sender, text) {
     const chatBox = document.getElementById("chatBox");
+    if (!chatBox) return;
     const msgDiv = document.createElement("div");
     msgDiv.style.marginBottom = "8px";
     msgDiv.innerHTML = `<strong>${sender}:</strong> ${text}`;
@@ -261,4 +295,5 @@ function addChatMessage(sender, text) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
+// Khởi chạy trang học tập
 initLearningPage();
