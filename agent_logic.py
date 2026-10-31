@@ -19,20 +19,20 @@ def load_json_file(filename):
 
 def get_learning_path(need_attention):
     """
-    Xử lý lộ trình học tập linh hoạt:
-    - Nếu học sinh đạt hết (need_attention trống): Trả về lộ trình nâng cao (data_advanced.json).
-    - Nếu học sinh có điểm chưa đạt: Lọc và trả về đúng các bài học bù đắp (data_remedial.json).
+    Đồng bộ logic trả về dữ liệu cho cả 2 trường hợp:
+    - Trường hợp 1: Không có lỗi -> Trả về toàn bộ khoá học nâng cao.
+    - Trường hợp 2: Có lỗi -> Lọc và trả về danh sách các bài học bù đắp.
     """
     advanced_data = load_json_file("data_advanced.json")
     
-    # Trường hợp 1: Không có biểu hiện chưa đạt -> Trả về khóa học nâng cao
+    # Trường hợp 1: Học sinh đạt hết -> Trả về lộ trình nâng cao
     if not need_attention or len(need_attention) == 0:
         return {
-            "message": "Bạn đã hoàn thành xuất sắc các mục tiêu cơ bản! Dưới đây là lộ trình nâng cao:",
+            "message": "Bạn đã hoàn thành xuất sắc toàn bộ bài đánh giá! Dưới đây là lộ trình nâng cao:",
             "content": advanced_data
         }
     
-    # Trường hợp 2: Có biểu hiện chưa đạt -> Lọc từ kho dữ liệu bù đắp (data_remedial.json)
+    # Trường hợp 2: Học sinh chưa đạt -> Lọc các bài học bù đắp từ data_remedial.json
     remedial_data = load_json_file("data_remedial.json")
     
     filtered_content = {}
@@ -40,7 +40,7 @@ def get_learning_path(need_attention):
         if key in remedial_data:
             filtered_content[key] = remedial_data[key]
             
-    # Nếu danh sách lọc trống hoặc không khớp key, dự phòng trả về toàn bộ remedial hoặc advanced
+    # Nếu không khớp key nào, dự phòng trả về toàn bộ remedial hoặc advanced
     if not filtered_content:
         filtered_content = remedial_data if remedial_data else advanced_data
 

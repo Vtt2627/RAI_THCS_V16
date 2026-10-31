@@ -31,12 +31,16 @@ async function initLearningPage() {
         });
 
         const data = await response.json();
+        
+        // Hiển thị thông báo lộ trình ở đầu trang
         document.getElementById("learningMessage").textContent = data.message;
+        
+        // LUÔN LUÔN render giao diện thẻ bài học trực quan (cho cả nâng cao và bù đắp)
         renderLessonsWithGate(data.content);
 
     } catch (error) {
         console.error("Lỗi kết nối Agent:", error);
-        document.getElementById("learningMessage").innerHTML = "<span style='color: #ef4444;'>Không thể kết nối tới Server Python Backend. Hãy đảm bảo bạn đã chạy file main.py!</span>";
+        document.getElementById("learningMessage").innerHTML = "<span style='color: #ef4444;'>Không thể kết nối tới Server Python Backend. Hãy đảm bảo file main.py đang chạy!</span>";
     }
 }
 
@@ -52,11 +56,10 @@ function renderLessonsWithGate(contentData) {
         
         let htmlContent = `<h3>Bài học ${index + 1}: ${lesson.title}</h3>`;
 
-        // Video nhúng với container cho YouTube API
+        // Xử lý video nhúng YouTube và chống tua
         let hasVideo = false;
         if (lesson.video_url) {
             hasVideo = true;
-            // Trích xuất Video ID từ URL embed hoặc watch
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             const match = lesson.video_url.match(regExp);
             const videoId = (match && match[2].length === 11) ? match[2] : "UlXXRd3HGT0";
@@ -73,7 +76,7 @@ function renderLessonsWithGate(contentData) {
             htmlContent += `<div class="reading-box">${lesson.reading_content}</div>`;
         }
 
-        // Nút bấm "Tôi đã đọc và hiểu nội dung này" (Khóa nếu có video)
+        // Nút bấm xác nhận (Khóa nếu có video, mở sẵn nếu chỉ có lý thuyết)
         const btnDisabledAttr = hasVideo ? "disabled style='opacity: 0.5; cursor: not-allowed;'" : "";
         const btnText = hasVideo ? "🔒 Vui lòng xem hết video để mở khóa nút này" : "✓ Tôi đã đọc và hiểu nội dung này";
 
@@ -83,7 +86,7 @@ function renderLessonsWithGate(contentData) {
             </div>
         `;
 
-        // Khung chứa câu hỏi kiểm tra (Bắt đầu bị ẩn)
+        // Khung chứa câu hỏi kiểm tra (Bắt đầu ẩn)
         if (lesson.check_questions && lesson.check_questions.length > 0) {
             htmlContent += `<div id="quizContainer_${index}" class="check-quiz-box" style="display: none;"></div>`;
         }
@@ -91,14 +94,13 @@ function renderLessonsWithGate(contentData) {
         card.innerHTML = htmlContent;
         container.appendChild(card);
 
-        // Lưu danh sách câu hỏi của bài học này vào bộ nhớ tạm
         currentActiveQuizzes[index] = {
             allQuestions: lesson.check_questions || [],
             lastQuestionId: null
         };
     });
 
-    // Khởi tạo YouTube Players sau khi render HTML
+    // Khởi tạo YouTube Players
     setTimeout(() => {
         lessons.forEach((lesson, index) => {
             if (lesson.video_url) {
@@ -107,7 +109,7 @@ function renderLessonsWithGate(contentData) {
         });
     }, 500);
 
-    // SỰ KIỆN: Bấm nút "Tôi đã hiểu nội dung" -> Bốc ngẫu nhiên câu hỏi
+    // Sự kiện bấm nút "Tôi đã hiểu nội dung"
     document.querySelectorAll(".understood-btn").forEach(btn => {
         btn.addEventListener("click", function() {
             if (this.disabled) return;
@@ -148,7 +150,6 @@ function renderLessonsWithGate(contentData) {
     });
 }
 
-// Khởi tạo YouTube Player với sự kiện chống tua / xem hết
 function initYouTubePlayer(index) {
     const playerElement = document.getElementById(`yt-player-${index}`);
     if (!playerElement) return;
@@ -169,7 +170,6 @@ function initYouTubePlayer(index) {
     }
 }
 
-// Khi video chạy đến hết (ENDED), mở khóa nút "Tôi đã đọc và hiểu"
 function onPlayerStateChange(event, index) {
     if (event.data === YT.PlayerState.ENDED) {
         const btn = document.getElementById(`understoodBtn_${index}`);
@@ -182,7 +182,6 @@ function onPlayerStateChange(event, index) {
     }
 }
 
-// SỰ KIỆN: Nộp câu trả lời kiểm tra
 function attachSubmitEvent(idx) {
     const submitBtn = document.querySelector(`.submit-check-btn[data-index="${idx}"]`);
     if (!submitBtn) return;
@@ -209,9 +208,8 @@ function attachSubmitEvent(idx) {
             understoodBtn.textContent = "✓ Đã hoàn thành bài học này";
         } else {
             feedback.style.color = "#ef4444";
-            feedback.textContent = "✕ Chưa chính xác! Bạn cần xem lại video và đọc lại nội dung phía trên. Nút xác nhận đã bị khóa lại để bạn học kỹ hơn.";
+            feedback.textContent = "✕ Chưa chính xác! Bạn cần xem lại video và nội dung phía trên. Nút xác nhận đã bị khóa lại.";
             
-            // Khóa lại nút và ẩn khung câu hỏi sau 3 giây để học sinh xem lại video
             setTimeout(() => {
                 quizContainer.style.display = "none";
                 understoodBtn.disabled = true;
@@ -220,7 +218,6 @@ function attachSubmitEvent(idx) {
                 understoodBtn.textContent = "🔒 Xem lại hết video để mở khóa lại nút này";
                 understoodBtn.scrollIntoView({ behavior: 'smooth' });
                 
-                // Tua lại video về đầu (0 giây) nếu cần học sinh xem lại
                 if (ytPlayers[idx] && typeof ytPlayers[idx].seekTo === 'function') {
                     ytPlayers[idx].seekTo(0);
                     ytPlayers[idx].pauseVideo();
@@ -230,7 +227,7 @@ function attachSubmitEvent(idx) {
     });
 }
 
-// Khung Chat trực tiếp với Agent ở phía dưới trang học tập
+// Khung Chat hỗ trợ bên dưới trang học tập
 document.getElementById("sendQueryBtn").addEventListener("click", async function() {
     const input = document.getElementById("userQuery");
     const text = input.value.trim();
