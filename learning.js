@@ -1,5 +1,5 @@
 const STORAGE_KEY = "aiResponsibleResult";
-const AGENT_API_URL = "http://localhost:8000/api/get-learning-content";
+const AGENT_API_URL = "/api/get-learning-content";
 
 // Lưu trữ các câu hỏi đã bốc cho từng bài học để tránh bốc trùng nếu trả lời sai
 let currentActiveQuizzes = {};
@@ -176,7 +176,7 @@ document.getElementById("sendQueryBtn").addEventListener("click", async function
         const results = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
         const studentCode = results.length > 0 ? results[results.length - 1].studentCode : "HS_001";
 
-        const res = await fetch("http://localhost:8000/api/chat", {
+        const res = await fetch('/api/chat', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ studentCode: studentCode, message: text })
